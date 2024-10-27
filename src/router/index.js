@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Greeting from '@/components/Greeting.vue';
+import Home from '@/pages/Home.vue';
 import NotFound from '@/pages/NotFound.vue';
 
 export default createRouter({
@@ -7,7 +7,7 @@ export default createRouter({
 	routes: [
 		{
 			path: '/',
-			component: Greeting,
+			component: Home,
 		},
 		{
 			path: '/:pathMatch(.*)*',
