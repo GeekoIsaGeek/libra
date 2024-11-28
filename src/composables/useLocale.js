@@ -1,6 +1,6 @@
 import { useI18n } from 'vue-i18n';
 
-const useSetLocale = () => {
+const useLocale = () => {
 	const { locale: currentLocale } = useI18n();
 
 	const setLocale = (localeToSet) => {
@@ -10,7 +10,7 @@ const useSetLocale = () => {
 		}
 	};
 
-	return { setLocale };
+	return { setLocale, locale: currentLocale };
 };
 
-export default useSetLocale;
+export default useLocale;
