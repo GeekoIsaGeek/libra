@@ -1,6 +1,9 @@
 <script setup>
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import FiltersIcon from '@/components/icons/FiltersIcon.vue';
+import Books from '/dummy-books.json';
+
+console.log(Books);
 </script>
 
 <template>

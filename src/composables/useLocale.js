@@ -1,16 +1,17 @@
 import { useI18n } from 'vue-i18n';
+import { locales } from '@/config/localization';
 
 const useLocale = () => {
-	const { locale: currentLocale } = useI18n();
+	const { locale } = useI18n();
 
 	const setLocale = (localeToSet) => {
-		if (['en', 'ka'].includes(localeToSet)) {
-			currentLocale.value = localeToSet;
+		if (Object.keys(locales).includes(localeToSet)) {
+			locale.value = localeToSet;
 			localStorage.setItem('locale', localeToSet);
 		}
 	};
 
-	return { setLocale, locale: currentLocale };
+	return { setLocale, locale };
 };
 
 export default useLocale;

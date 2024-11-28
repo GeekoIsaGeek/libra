@@ -1,34 +1,40 @@
 {
 	"books": [
 		{
-			"title": "The Catcher in the Rye",
-			"author": "J.D. Salinger",
-			"year": 1951
+			"en": {
+				"title": "The Catcher in the Rye",
+				"author": "J.D. Salinger",
+				"genre": "Fiction",
+				"description": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection."
+			},
+			"ka": {
+				"title": "თამაში ჭვავის ყანაში",
+				"author": "ჯ.დ. სელინჯერი",
+				"genre": "ფიქცია",
+				"description": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ადოლესცენტებმა მის ანგსტის და უცხოელობის თემებისთვის, როგორც საზოგადოს სულის კრიტიკად"
+			},
+			"year": 1951,
+			"pages": 234,
+			"tags": ["Fiction", "Novel", "Classic"],
+			"language": "English"
 		},
 		{
-			"title": "To Kill a Mockingbird",
-			"author": "Harper Lee",
-			"year": 1960
-		},
-		{
-			"title": "1984",
-			"author": "George Orwell",
-			"year": 1949
-		},
-		{
-			"title": "One Hundred Years of Solitude",
-			"author": "Gabriel Garcia Marquez",
-			"year": 1967
-		},
-		{
-			"title": "Brave New World",
-			"author": "Aldous Huxley",
-			"year": 1932
-		},
-		{
-			"title": "The Great Gatsby",
-			"author": "F. Scott Fitzgerald",
-			"year": 1925
+			"en": {
+				"title": "The Great Gatsby",
+				"author": "F. Scott Fitzgerald",
+				"genre": "Fiction",
+				"description": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan. The novel was inspired by a youthful romance Fitzgerald had with a socialite, and by parties he attended on Long Island's North Shore in 1922. The novel is widely regarded as a critique of the American Dream."
+			},
+			"ka": {
+				"title": "დიდი გეტსბი",
+				"author": "ფ. სკოტ ფიცჯერალდი",
+				"genre": "ფიქცია",
+				"description": "დიდი გეტსბი არის 1925 წლის რომანი ამერიკელ მწყემსე F. სკოტ ფიცჯერალდისას. რომელიც დაყვანილია ჯეზის დროში ლონგ აილენდში, ახლოს ნიუ-იორკში, რომელიც ნაწილობრივ აღწერს პირველ პირის ნარატორი ნიკ კარაუეის ინტერაქციებს მისას მისტერიოზ მილიონერ ჯეი გეტსბისა და გეტსბის გადარების განათებას მის საერისახეს, დეიზი ბუქენთან. რომელიც ინსპირირებულია ფიცჯერალდის ახალგაზრდა რომანსით სოციალიტესთან და მას შეუკრიბელ, და ლონგ აილენდის ჩრდილოეთ ნაწილში 1922 წლებში მისი მიერ შესანიშნავი პარტიების მიერ. რომელიც ინსპირირებულია ამერიკული სიზმის კრიტიკით."
+			},
+			"year": 1925,
+			"pages": 180,
+			"tags": ["Fiction", "Novel", "Classic"],
+			"language": "English"
 		}
 	]
 }
