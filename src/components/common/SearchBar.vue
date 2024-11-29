@@ -2,18 +2,63 @@
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import FiltersIcon from '@/components/icons/FiltersIcon.vue';
 import Books from '/dummy-books.json';
+import { ref } from 'vue';
+import Dropdown from '@/components/UI/Dropdown.vue';
+import useLocale from '@/composables/useLocale.js';
 
-console.log(Books);
+const { locale } = useLocale();
+
+const searchString = ref('');
+const showResults = ref(false);
+const results = ref([]);
+
+const handleSearch = () => {
+	const searchStr = searchString.value.toLowerCase();
+
+	if (searchStr === '') {
+		showResults.value = false;
+		results.value = [];
+	} else {
+		const currLocale = locale.value;
+		showResults.value = true;
+		results.value = Books.books.filter((book) => book.title[currLocale].toLowerCase().includes(searchStr));
+	}
+};
 </script>
 
 <template>
-	<div class="px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 w-[60%] shadow rounded-full">
-		<SearchIcon class="icon" />
-		<input
-			type="text"
-			class="w-full text-black outline-none placeholder:text-sm"
-			:placeholder="$t('search.inputPlaceholder') + '...'"
-		/>
-		<FiltersIcon class="icon" />
+	<div class="relative w-[60%]">
+		<div
+			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
+				results.length > 0 ? 'rounded-b-none' : '!rounded-b-3xl'
+			}`"
+		>
+			<SearchIcon class="icon" />
+			<input
+				type="text"
+				v-model="searchString"
+				class="w-full text-black outline-none placeholder:text-sm"
+				:placeholder="$t('search.inputPlaceholder') + '...'"
+				@input="handleSearch"
+			/>
+			<FiltersIcon class="icon" />
+		</div>
+
+		<Dropdown
+			class="w-full bottom-1"
+			useDropdownOnly
+			v-model:showDropdown="showResults"
+			:options="results"
+			:lastOptionClass="results.length > 0 ? '!rounded-b-3xl' : ''"
+			:optionsWrapperClass="`${results.length > 0 ? 'rounded-b-3xl rounded-t-none' : ''}`"
+			optionClass="px-4 py-2"
+		>
+			<template v-slot:option="{ option: book }">
+				<div class="flex justify-between w-full gap-2">
+					<h3 class="w-full">{{ book?.['title']?.[locale] }} {{ book?.['year'] ? `(${book.year})` : '' }}</h3>
+					<span class="min-w-max text-sm self-start font-medium">{{ book?.['author']?.[locale] }}</span>
+				</div>
+			</template>
+		</Dropdown>
 	</div>
 </template>
