@@ -1,5 +1,5 @@
 export default {
 	search: {
-		inputPlaceholder: 'ძებნა',
+		inputPlaceholder: 'Tag-ებით ძებნისთვის წერა დაიწყეთ #-ით (მაგ. # ნოველა Sci-Fi)',
 	},
 };

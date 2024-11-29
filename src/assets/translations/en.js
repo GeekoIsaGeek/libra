@@ -1,5 +1,5 @@
 export default {
 	search: {
-		inputPlaceholder: 'Search',
+		inputPlaceholder: 'To search by tags, start typing with # (e.g # fiction novel)',
 	},
 };

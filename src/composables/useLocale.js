@@ -11,7 +11,7 @@ const useLocale = () => {
 		}
 	};
 
-	return { setLocale, locale: locale };
+	return { setLocale, locale };
 };
 
 export default useLocale;

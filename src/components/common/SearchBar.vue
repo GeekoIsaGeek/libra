@@ -12,16 +12,37 @@ const searchString = ref('');
 const showResults = ref(false);
 const results = ref([]);
 
+const searchByTags = (tags) => {
+	showResults.value = true;
+
+	results.value = Books.books.filter((book) => {
+		return tags.every((tag) => book?.tags?.includes(tag));
+	});
+};
+
+const clearResults = () => {
+	showResults.value = false;
+	results.value = [];
+};
+
 const handleSearch = () => {
 	const searchStr = searchString.value.toLowerCase();
 
 	if (searchStr === '') {
-		showResults.value = false;
-		results.value = [];
+		clearResults();
+	} else if (searchStr.startsWith('#')) {
+		const tags = searchStr.slice(1).trim().split(' ');
+
+		tags.length > 0 ? searchByTags(tags) : clearResults();
 	} else {
 		const currLocale = locale.value;
 		showResults.value = true;
-		results.value = Books.books.filter((book) => book.title[currLocale].toLowerCase().includes(searchStr));
+
+		results.value = Books.books.filter(
+			(book) =>
+				book?.title[currLocale]?.toLowerCase().includes(searchStr) ||
+				book?.author[currLocale]?.toLowerCase().includes(searchStr)
+		);
 	}
 };
 </script>
@@ -38,7 +59,7 @@ const handleSearch = () => {
 				type="text"
 				v-model="searchString"
 				class="w-full text-black outline-none placeholder:text-sm"
-				:placeholder="$t('search.inputPlaceholder') + '...'"
+				:placeholder="$t('search.inputPlaceholder')"
 				@input="handleSearch"
 			/>
 			<FiltersIcon class="icon" />
