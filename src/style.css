@@ -2,10 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Reset */
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+body {
+	background: #101010;
 }
 
 ul {
@@ -17,6 +21,26 @@ a {
 	color: inherit;
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #2e2e2e;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c6a965;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
+/* Custom Tailwind Classes */
 @layer components {
 	.icon {
 		@apply w-5 h-5 fill-black;

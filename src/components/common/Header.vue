@@ -5,9 +5,9 @@ import SearchBar from '@/components/common/SearchBar.vue';
 
 <template>
 	<header
-		class="sm:mt-24 sm:w-[calc(100%-160px)] sm:mx-20 sm:px-8 px-2 py-4 sm:py-6 rounded-lg bg-black/80 border border-gray-400 shadow-md"
+		class="w-full lg:px-8 px-2 sm:px-4 py-6 sm:rounded-lg bg-almostBlack border-b sm:border border-gold shadow-md"
 	>
-		<div class="flex flex-wrap items-center justify-center gap-2 sm:justify-between">
+		<div class="flex flex-wrap items-center justify-center gap-4 lg:justify-between">
 			<SearchBar />
 			<LanguageSwitcher />
 		</div>

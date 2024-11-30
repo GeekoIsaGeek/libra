@@ -32,7 +32,7 @@ defineEmits(['update:showDropdown']);
 <template>
 	<div class="relative">
 		<div
-			class="flex items-center justify-between gap-4 bg-white border border-gray-500 rounded-md px-2 py-1 text-black select-none cursor-pointer hover:bg-white/90 transition-colors duration-200 ease-out shadow min-w-[10rem]"
+			class="flex items-center justify-between gap-4 bg-white border border-gray-500 rounded-lg px-2 py-1 text-black select-none cursor-pointer hover:bg-white/90 transition-colors duration-200 ease-out shadow min-w-[10.25rem]"
 			@click="$emit('update:showDropdown', !showDropdown)"
 			v-if="!useDropdownOnly"
 		>
@@ -48,7 +48,7 @@ defineEmits(['update:showDropdown']);
 				v-for="(option, i) in options"
 				:key="option?.id || option"
 				@click="() => selectHandler(option)"
-				class="flex items-center gap-3 w-full px-2 hover:bg-[wheat]/50 transition-colors duration-200 ease-out py-1"
+				class="flex items-center gap-3 w-full px-2 hover:bg-gold/60 transition-colors duration-200 ease-out py-1"
 				:class="[optionClass && optionClass, lastOptionClass && i === options.length - 1 ? lastOptionClass : '']"
 			>
 				<slot name="option" :option="option" />

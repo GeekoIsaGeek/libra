@@ -2,6 +2,7 @@
 import { useRoute } from 'vue-router';
 import useLocale from '@/composables/useLocale';
 import Books from '/dummy-books.json';
+import GenreTag from '@/components/common/GenreTag.vue';
 
 const { params } = useRoute();
 const { locale } = useLocale();
@@ -10,6 +11,13 @@ const book = Books.books.find((book) => book?.slug === params?.slug);
 </script>
 
 <template>
-	<h1 class="text-center text-2xl mt-10">{{ book?.title?.[locale] }}</h1>
-	<p class="w-3/5 mx-auto mt-4">{{ book?.description?.[locale] }}</p>
+	<div class="flex flex-col items-center mt-10">
+		<h1 class="text-center text-3xl">{{ book?.title?.[locale] }}</h1>
+		<img class="w-[300px] h-[450px] my-8 rounded-sm" :src="book?.image" :alt="book?.title?.[locale]" />
+		<p class="px-10 md:w-2/5 mx-auto">{{ book?.description?.[locale] }}</p>
+
+		<ul class="flex gap-2 items-center justify-center mt-5">
+			<GenreTag v-for="tag in book?.tags" :key="tag" class="bg-gold text-black px-2 py-1 rounded-md" :tag="tag" />
+		</ul>
+	</div>
 </template>

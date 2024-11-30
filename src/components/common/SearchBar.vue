@@ -53,7 +53,7 @@ const handleSearch = () => {
 </script>
 
 <template>
-	<div class="relative w-full sm:w-[60%]">
+	<div class="relative w-full lg:w-[60%]">
 		<div
 			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
 				results.length > 0 ? 'rounded-b-none' : '!rounded-b-3xl'

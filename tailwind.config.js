@@ -2,7 +2,16 @@
 export default {
 	content: ['./index.html', './src/**/*.{vue,js,ts}'],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				gold: '#c6a965',
+				wheat: '#ffe3ad',
+				lightBrown: '#b8a379',
+				mediumBrown: '#9f8962',
+				darkestBrown: '#2e2e2e',
+				almostBlack: '#141414f2',
+			},
+		},
 	},
 	plugins: [],
 };

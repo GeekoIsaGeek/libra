@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+import SideBar from '@/components/common/SideBar.vue';
+</script>
 
 <template>
-	<div class="flex flex-col h-screen w-full bg-black/90 text-white">
-		<slot />
+	<div class="flex items-start min-h-screen w-full bg-[#101010] text-white">
+		<SideBar />
+		<div
+			class="flex flex-col items-start w-full sm:mt-8 sm:w-[calc(100%-6rem)] lg:w-[calc(100%-10rem)] mx-auto lg:mx-20"
+		>
+			<slot />
+		</div>
 	</div>
 </template>
