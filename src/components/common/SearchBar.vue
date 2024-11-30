@@ -5,6 +5,7 @@ import Books from '/dummy-books.json';
 import { ref } from 'vue';
 import Dropdown from '@/components/UI/Dropdown.vue';
 import useLocale from '@/composables/useLocale.js';
+import { RouterLink } from 'vue-router';
 
 const { locale } = useLocale();
 
@@ -36,19 +37,23 @@ const handleSearch = () => {
 		tags.length > 0 ? searchByTags(tags) : clearResults();
 	} else {
 		const currLocale = locale.value;
+		const fallbackLocale = currLocale === 'en' ? 'ge' : 'en';
+
 		showResults.value = true;
 
 		results.value = Books.books.filter(
 			(book) =>
 				book?.title[currLocale]?.toLowerCase().includes(searchStr) ||
-				book?.author[currLocale]?.toLowerCase().includes(searchStr)
+				book?.author[currLocale]?.toLowerCase().includes(searchStr) ||
+				book?.title[fallbackLocale]?.toLowerCase().includes(searchStr) ||
+				book?.author[fallbackLocale]?.toLowerCase().includes(searchStr)
 		);
 	}
 };
 </script>
 
 <template>
-	<div class="relative w-[60%]">
+	<div class="relative w-full sm:w-[60%]">
 		<div
 			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
 				results.length > 0 ? 'rounded-b-none' : '!rounded-b-3xl'
@@ -66,19 +71,22 @@ const handleSearch = () => {
 		</div>
 
 		<Dropdown
-			class="w-full bottom-1"
+			class="w-full bottom-1 z-20"
 			useDropdownOnly
 			v-model:showDropdown="showResults"
 			:options="results"
 			:lastOptionClass="results.length > 0 ? '!rounded-b-3xl' : ''"
 			:optionsWrapperClass="`${results.length > 0 ? 'rounded-b-3xl rounded-t-none' : ''}`"
 			optionClass="px-4 py-2"
+			:selectHandler="() => null"
 		>
 			<template v-slot:option="{ option: book }">
-				<div class="flex justify-between w-full gap-2">
+				<RouterLink :to="`books/${book?.slug}`" class="flex justify-between w-full gap-1 sm:gap-2">
 					<h3 class="w-full">{{ book?.['title']?.[locale] }} {{ book?.['year'] ? `(${book.year})` : '' }}</h3>
-					<span class="min-w-max text-sm self-start font-medium">{{ book?.['author']?.[locale] }}</span>
-				</div>
+					<span class="min-w-max text-xs sm:text-sm self-center font-medium">{{
+						book?.['author']?.[locale]
+					}}</span>
+				</RouterLink>
 			</template>
 		</Dropdown>
 	</div>

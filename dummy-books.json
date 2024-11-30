@@ -20,81 +20,10 @@
 			},
 			"year": 1951,
 			"pages": 234,
-			"tags": ["Fiction", "Novel", "Classic"],
-			"language": "English",
-			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"
-		},
-		{
-			"id": 2,
-			"title": {
-				"en": "The Catcher in the Rye",
-				"ka": "თამაში ჭვავის ყანაში"
-			},
-			"author": {
-				"en": "J.D. Salinger",
-				"ka": "ჯ.დ. სელინჯერი"
-			},
-			"genre": {
-				"en": "Fiction",
-				"ka": "ფიქცია"
-			},
-			"description": {
-				"en": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
-				"ka": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ა"
-			},
-			"year": 1951,
-			"pages": 234,
-			"tags": ["Fiction", "Novel", "Classic"],
-			"language": "English",
-			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"
-		},
-		{
-			"id": 3,
-			"title": {
-				"en": "The Catcher in the Rye",
-				"ka": "თამაში ჭვავის ყანაში"
-			},
-			"author": {
-				"en": "J.D. Salinger",
-				"ka": "ჯ.დ. სელინჯერი"
-			},
-			"genre": {
-				"en": "Fiction",
-				"ka": "ფიქცია"
-			},
-			"description": {
-				"en": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
-				"ka": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ა"
-			},
-			"year": 1951,
-			"pages": 234,
 			"tags": ["fiction", "novel", "classic"],
 			"language": "English",
-			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"
-		},
-		{
-			"id": 4,
-			"title": {
-				"en": "The Catcher in the Rye",
-				"ka": "თამაში ჭვავის ყანაში"
-			},
-			"author": {
-				"en": "J.D. Salinger",
-				"ka": "ჯ.დ. სელინჯერი"
-			},
-			"genre": {
-				"en": "Fiction",
-				"ka": "ფიქცია"
-			},
-			"description": {
-				"en": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
-				"ka": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ა"
-			},
-			"year": 1951,
-			"pages": 234,
-			"tags": ["fiction", "novel", "classic"],
-			"language": "English",
-			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg"
+			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg",
+			"slug": "the-catcher-in-the-rye"
 		},
 		{
 			"id": 2,
@@ -118,7 +47,8 @@
 			"pages": 180,
 			"tags": ["fiction", "novel", "classic"],
 			"language": "English",
-			"image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg"
+			"image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg",
+			"slug": "the-great-gatsby"
 		}
 	]
 }

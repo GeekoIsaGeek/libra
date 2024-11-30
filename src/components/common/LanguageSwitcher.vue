@@ -31,7 +31,7 @@ const switchLanguage = ([loc, lang]) => {
 
 		<template v-slot:option="{ option: [loc, lang] }">
 			<img :src="loc === 'en' ? UK : GE" alt="country-flag" class="w-4 h-4" />
-			{{ lang }}
+			<h4>{{ lang }}</h4>
 		</template>
 	</Dropdown>
 </template>
