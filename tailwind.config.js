@@ -9,7 +9,7 @@ export default {
 				lightBrown: '#b8a379',
 				mediumBrown: '#9f8962',
 				darkestBrown: '#2e2e2e',
-				almostBlack: '#141414f2',
+				almostBlack: '#181818',
 			},
 		},
 	},

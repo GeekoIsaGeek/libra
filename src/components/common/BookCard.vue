@@ -1,5 +1,7 @@
 <script setup>
 import useLocale from '@/composables/useLocale.js';
+import { RouterLink } from 'vue-router';
+
 const props = defineProps({
 	book: {
 		type: Object,
@@ -12,7 +14,7 @@ const { locale } = useLocale();
 
 <template>
 	<div class="book" :data-title="book?.title?.[locale]" :data-author="book?.author?.[locale]" style="--delay: 2">
-		<a :href="`books/${book?.slug}`" class="book-title" target="_blank">
+		<RouterLink :to="`books/${book?.slug}`" class="book-title">
 			<div class="img-wrapper">
 				<img :src="book?.image" :alt="book?.title?.[locale]" />
 			</div>
@@ -20,7 +22,7 @@ const { locale } = useLocale();
 				<div class="title">{{ book?.title?.[locale] }}</div>
 				<div class="author">{{ book?.author?.[locale] }}</div>
 			</div>
-		</a>
+		</RouterLink>
 	</div>
 </template>
 

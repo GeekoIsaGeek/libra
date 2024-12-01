@@ -1,4 +1,6 @@
 <script setup>
+import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue';
+
 defineProps({
 	options: {
 		type: Array,
@@ -37,12 +39,14 @@ defineEmits(['update:showDropdown']);
 			v-if="!useDropdownOnly"
 		>
 			<slot />
+			<ArrowDownIcon :class="`icon ${showDropdown ? 'rotate-180' : ''}`" />
 		</div>
 
 		<ul
-			class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow"
+			class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow max-h-48 overflow-y-auto z-30"
 			:class="optionsWrapperClass || ''"
-			v-if="showDropdown && options.length > 0"
+			v-if="showDropdown && options?.length > 0"
+			@mouseleave="$emit('update:showDropdown', false)"
 		>
 			<li
 				v-for="(option, i) in options"

@@ -3,15 +3,17 @@ import SearchIcon from '@/components/icons/SearchIcon.vue';
 import FiltersIcon from '@/components/icons/FiltersIcon.vue';
 import Books from '/dummy-books.json';
 import { ref } from 'vue';
-import Dropdown from '@/components/UI/Dropdown.vue';
+import Select from '@/components/UI/Select.vue';
 import useLocale from '@/composables/useLocale.js';
 import { RouterLink } from 'vue-router';
+import Filters from '@/components/filters/Filters.vue';
 
 const { locale } = useLocale();
 
 const searchString = ref('');
 const showResults = ref(false);
 const results = ref([]);
+const showFilters = ref(false);
 
 const searchByTags = (tags) => {
 	showResults.value = true;
@@ -56,7 +58,7 @@ const handleSearch = () => {
 	<div class="relative w-full lg:w-[60%]">
 		<div
 			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
-				results.length > 0 ? 'rounded-b-none' : '!rounded-b-3xl'
+				results.length > 0 || showFilters ? 'rounded-b-none' : '!rounded-b-3xl'
 			}`"
 		>
 			<SearchIcon class="icon" />
@@ -66,11 +68,15 @@ const handleSearch = () => {
 				class="w-full text-black outline-none placeholder:text-sm"
 				:placeholder="$t('search.inputPlaceholder')"
 				@input="handleSearch"
+				@focus="showFilters = false"
 			/>
-			<FiltersIcon class="icon" />
+			<FiltersIcon
+				class="icon hover:contrast-[0.1] cursor-pointer select-none"
+				@click="showFilters = !showFilters"
+			/>
 		</div>
 
-		<Dropdown
+		<Select
 			class="w-full bottom-1 z-20"
 			useDropdownOnly
 			v-model:showDropdown="showResults"
@@ -88,6 +94,8 @@ const handleSearch = () => {
 					}}</span>
 				</RouterLink>
 			</template>
-		</Dropdown>
+		</Select>
+
+		<Filters v-if="showFilters" @handleMouseLeave="() => (showFilters = false)" />
 	</div>
 </template>

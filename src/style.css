@@ -28,12 +28,12 @@ a {
 
 ::-webkit-scrollbar-track {
 	background: #2e2e2e;
-	border-radius: 10px;
+	border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: #c6a965;
-	border-radius: 10px;
+	border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
