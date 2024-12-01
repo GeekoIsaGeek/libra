@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
 
-export const useFilterStore = defineStore('app', () => {
+export const useFilterStore = defineStore('filters', () => {
 	const showListing = ref(false);
 	const genre = ref('');
 	const language = ref('');

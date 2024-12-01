@@ -45,7 +45,7 @@ defineEmits(['update:showDropdown']);
 		<ul
 			class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow max-h-48 overflow-y-auto z-30"
 			:class="optionsWrapperClass || ''"
-			v-if="showDropdown && options?.length > 0"
+			v-if="showDropdown"
 			@mouseleave="$emit('update:showDropdown', false)"
 		>
 			<li
@@ -57,6 +57,10 @@ defineEmits(['update:showDropdown']);
 			>
 				<slot name="option" :option="option" />
 			</li>
+
+			<p class="w-full !rounded-b-3xl py-3 px-4 text-center" v-if="!options.length">
+				{{ $t('general.nothingFound') }}
+			</p>
 		</ul>
 	</div>
 </template>

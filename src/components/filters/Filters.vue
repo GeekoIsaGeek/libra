@@ -1,6 +1,6 @@
 <script setup>
 import SelectGenre from '@/components/common/SelectGenre.vue';
-import LanguageFilter from '@/components/common/LanguageFilter.vue';
+import LanguageFilter from '@/components/filters/LanguageFilter.vue';
 import PagesFilter from '@/components/filters/PagesFilter.vue';
 
 const emit = defineEmits(['handleMouseLeave']);

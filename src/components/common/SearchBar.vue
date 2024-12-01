@@ -58,7 +58,7 @@ const handleSearch = () => {
 	<div class="relative w-full lg:w-[60%]">
 		<div
 			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
-				results.length > 0 || showFilters ? 'rounded-b-none' : '!rounded-b-3xl'
+				showResults || showFilters ? 'rounded-b-none' : '!rounded-b-3xl'
 			}`"
 		>
 			<SearchIcon class="icon" />
@@ -82,7 +82,7 @@ const handleSearch = () => {
 			v-model:showDropdown="showResults"
 			:options="results"
 			:lastOptionClass="results.length > 0 ? '!rounded-b-3xl' : ''"
-			:optionsWrapperClass="`${results.length > 0 ? 'rounded-b-3xl rounded-t-none' : ''}`"
+			:optionsWrapperClass="`${results.length > 0 ? 'rounded-b-3xl rounded-t-none' : 'rounded-b-3xl'}`"
 			optionClass="px-4 py-2"
 			:selectHandler="() => null"
 		>

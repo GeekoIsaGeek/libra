@@ -19,3 +19,14 @@ export const transformSelectOption = ({ option, locale, type, index }) => {
 
 	return capitalize(option);
 };
+
+export const slugify = (title, author) => {
+	if (title && author) {
+		const authorLastname = author?.split(' ')?.slice(-1)?.[0]?.toLowerCase();
+		const titleSlug = title?.replace(/\s+/g, '-').toLowerCase();
+
+		return `${titleSlug}-by-${authorLastname}`;
+	}
+
+	console.error('Title and author are required');
+};

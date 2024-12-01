@@ -1,4 +1,7 @@
 export default {
+	general: {
+		nothingFound: 'ვერაფერი მოიძებნა',
+	},
 	search: {
 		inputPlaceholder: 'Tag-ებით ძებნისთვის წერა დაიწყეთ #-ით (მაგ. # ნოველა Sci-Fi)',
 	},
