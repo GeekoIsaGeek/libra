@@ -10,18 +10,14 @@
 				"en": "J.D. Salinger",
 				"ka": "ჯ.დ. სელინჯერი"
 			},
-			"genre": {
-				"en": "Fiction",
-				"ka": "ფიქცია"
-			},
 			"description": {
 				"en": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
 				"ka": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ა"
 			},
 			"year": 1951,
-			"pages": 234,
-			"tags": ["fiction", "novel", "classic"],
-			"language": "English",
+			"pages": 540,
+			"tags": ["fiction", "novel", "classic", "romance"],
+			"language": "english",
 			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg",
 			"slug": "the-cather-in-the-rye-by-salinger"
 		},
@@ -35,10 +31,6 @@
 				"en": "F. Scott Fitzgerald",
 				"ka": "ფ. სკოტ ფიცჯერალდი"
 			},
-			"genre": {
-				"en": "Fiction",
-				"ka": "ფიქცია"
-			},
 			"description": {
 				"en": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan. The novel was inspired by a youthful romance Fitzgerald had with a socialite, and by parties he attended on Long Island's North Shore in 1922. The novel is widely regarded as a critique of the American Dream.",
 				"ka": "დიდი გეტსბი არის 1925 წლის რომანი ამერიკელ მწყემსე F. სკოტ ფიცჯერალდისას. რომელიც დაყვანილია ჯეზის დროში ლონგ აილენდში, ახლოს ნიუ-იორკში, რომელიც ნაწილობრივ აღწერს პირველ პირის ნარატორი ნიკ კარაუეის ინტერაქ"
@@ -46,7 +38,7 @@
 			"year": 1925,
 			"pages": 180,
 			"tags": ["fiction", "novel", "classic"],
-			"language": "English",
+			"language": "english",
 			"image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg",
 			"slug": "the-great-gatsby-by-fitzgerald"
 		}

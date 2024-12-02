@@ -6,12 +6,14 @@ import { storeToRefs } from 'pinia';
 import { pages } from '@/config/constants';
 
 const { pages: pageCount } = storeToRefs(useFilterStore());
+const { filterBooks } = useFilterStore();
 
 const showPages = ref(false);
 
 const handleSelect = (selectedValue) => {
 	pageCount.value = selectedValue;
 	showPages.value = false;
+	filterBooks();
 };
 </script>
 

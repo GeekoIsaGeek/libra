@@ -11,10 +11,12 @@ const showGenres = ref(false);
 const { locale } = useLocale();
 
 const { genre } = storeToRefs(useFilterStore());
+const { filterBooks } = useFilterStore();
 
 const handleSelect = (selectedValue) => {
 	genre.value = selectedValue;
 	showGenres.value = false;
+	filterBooks();
 };
 </script>
 

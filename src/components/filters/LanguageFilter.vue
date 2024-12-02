@@ -11,10 +11,12 @@ const showLanguages = ref(false);
 const { locale } = useLocale();
 
 const { language } = storeToRefs(useFilterStore());
+const { filterBooks } = useFilterStore();
 
 const handleSelect = (selectedValue) => {
 	language.value = selectedValue;
 	showLanguages.value = false;
+	filterBooks();
 };
 </script>
 
