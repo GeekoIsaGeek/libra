@@ -2,11 +2,12 @@
 import Header from '@/components/common/Header.vue';
 import BookListing from '@/components/book-listing/BookListing.vue';
 import { useFilterStore } from '@/stores/FilterStore';
+import { storeToRefs } from 'pinia';
 
-const { showListing } = useFilterStore();
+const { isAnyFilterSet } = storeToRefs(useFilterStore());
 </script>
 
 <template>
 	<Header />
-	<BookListing v-if="showListing" />
+	<BookListing v-if="isAnyFilterSet" />
 </template>

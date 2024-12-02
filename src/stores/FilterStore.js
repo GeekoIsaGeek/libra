@@ -3,7 +3,6 @@ import { ref, computed } from 'vue';
 import Books from '/dummy-books.json';
 
 export const useFilterStore = defineStore('filters', () => {
-	const showListing = ref(true);
 	const genre = ref('');
 	const language = ref('');
 	const pages = ref();
@@ -13,18 +12,16 @@ export const useFilterStore = defineStore('filters', () => {
 	const filteredBooks = ref([]);
 
 	const filterBooks = () => {
-		const filtered = Books.books.filter((book) => {
-			const passesGenre = !genre.value || book?.tags?.includes(genre.value);
-			const passesLanguage = !language.value || book.language === language.value;
+		filteredBooks.value = books.value.filter((book) => {
+			const meetsGenreFilter = !genre.value || book?.tags?.includes(genre.value);
+			const meetsLangFilter = !language.value || book.language === language.value;
 
-			const passesPages =
+			const meetsPagesFilter =
 				!pages.value ||
-				(book.pages >= pages.value?.min && (pages.value?.max ? book.pages <= pages?.value?.max : true));
+				(book.pages >= pages.value?.min && (pages.value?.max ? book.pages <= pages?.value?.max : true)); // If 1000+ is selected, we won't have a max value
 
-			return passesGenre && passesLanguage && passesPages;
+			return meetsGenreFilter && meetsLangFilter && meetsPagesFilter;
 		});
-		console.log(filtered);
-		filteredBooks.value = filtered;
 	};
 
 	const clearFilters = () => {
@@ -33,5 +30,5 @@ export const useFilterStore = defineStore('filters', () => {
 		pages.value = '';
 	};
 
-	return { showListing, genre, language, pages, books, filteredBooks, filterBooks, isAnyFilterSet, clearFilters };
+	return { genre, language, pages, books, filteredBooks, filterBooks, isAnyFilterSet, clearFilters };
 });
