@@ -23,7 +23,6 @@ const enterLeaveClass = `opacity-0 translate-y-[-10px] ${props?.transitionClass 
 		:leave-to-class="off ? '' : enterLeaveClass"
 		:enter-active-class="off ? '' : activeClass"
 		:leave-active-class="off ? '' : activeClass"
-		appear
 	>
 		<slot />
 	</Transition>
