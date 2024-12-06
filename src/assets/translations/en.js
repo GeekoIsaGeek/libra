@@ -10,5 +10,6 @@ export default {
 		genre: 'Genre',
 		pages: 'Pages',
 		language: 'Language',
+		recentlyViewed: 'Recently viewed books',
 	},
 };

@@ -1,5 +1,6 @@
 import georgianTranslations from '@/assets/translations/ka';
 import { capitalize } from 'vue';
+import { numOfRecViewedBooksToShow } from '@/config/constants';
 
 export const transformSelectOption = ({ option, locale, type, index }) => {
 	const translations = {
@@ -29,4 +30,24 @@ export const slugify = (title, author) => {
 	}
 
 	console.error('Title and author are required');
+};
+
+export const addToRecentlyViewed = (book) => {
+	if (!book?.id && !book?.title) {
+		return;
+	}
+
+	const recentlyViewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+	const bookIndex = recentlyViewed.findIndex((item) => item.id === book.id);
+
+	if (bookIndex !== -1) {
+		recentlyViewed.splice(bookIndex, 1);
+	}
+
+	if (recentlyViewed.length >= numOfRecViewedBooksToShow) {
+		recentlyViewed.shift();
+	}
+
+	recentlyViewed.push(book);
+	localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed.reverse()));
 };

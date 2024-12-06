@@ -1,4 +1,6 @@
-// These should be used as values of select elements
+export const numOfRecViewedBooksToShow = 5;
+
+// These should be used as the values of filter select elements
 export const languages = ['english', 'georgian'];
 
 export const bookGenres = [

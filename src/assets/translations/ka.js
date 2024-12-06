@@ -10,7 +10,9 @@ export default {
 		genre: 'ჟანრი',
 		pages: 'გვერდი',
 		language: 'ენა',
+		recentlyViewed: 'ბოლოს ნანახი წიგნები',
 	},
+
 	// Order of languages and genres should be the same as in the constants file
 	languages: ['ინგლისური', 'ქართული'],
 	genres: [

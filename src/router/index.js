@@ -9,14 +9,17 @@ export default createRouter({
 		{
 			path: '/',
 			component: Home,
+			name: 'home',
 		},
 		{
 			path: '/books/:slug',
 			component: DetailsPage,
+			name: 'details',
 		},
 		{
 			path: '/:pathMatch(.*)*',
 			component: NotFound,
+			name: 'not-found',
 		},
 	],
 });

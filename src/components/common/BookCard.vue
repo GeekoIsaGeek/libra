@@ -7,20 +7,29 @@ const props = defineProps({
 		type: Object,
 		required: true,
 	},
+	isSmall: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const { locale } = useLocale();
 </script>
 
 <template>
-	<div class="book" :data-title="book?.title?.[locale]" :data-author="book?.author?.[locale]" style="--delay: 2">
+	<div
+		:class="`book ${isSmall && 'mini'}`"
+		:data-title="book?.title?.[locale]"
+		:data-author="book?.author?.[locale]"
+		style="--delay: 2"
+	>
 		<RouterLink :to="`books/${book?.slug}`" class="book-title">
 			<div class="img-wrapper">
-				<img :src="book?.image" :alt="book?.title?.[locale]" />
+				<img :src="book?.image" :alt="book?.title?.[locale]" :class="`${isSmall && 'mini'}`" />
 			</div>
-			<div class="book-info">
-				<div class="title">{{ book?.title?.[locale] }}</div>
-				<div class="author">{{ book?.author?.[locale] }}</div>
+			<div :class="`book-info ${isSmall && 'mini'}`">
+				<div :class="`title ${isSmall && 'mini'}`">{{ book?.title?.[locale] }}</div>
+				<div :class="`author ${isSmall && 'mini'}`">{{ book?.author?.[locale] }}</div>
 			</div>
 		</RouterLink>
 	</div>
@@ -42,6 +51,12 @@ const { locale } = useLocale();
 	display: flex;
 	flex-direction: column;
 }
+.book.mini {
+	width: 100px;
+	height: 150px;
+	padding: 7px;
+	background-color: rgba(20, 20, 20, 0.9);
+}
 
 .book:hover {
 	transform: scale(1.05);
@@ -54,21 +69,42 @@ const { locale } = useLocale();
 	border-bottom: 1px solid #9f8962;
 	margin-bottom: 10px;
 }
+.book img.mini {
+	height: 84px;
+	object-fit: cover;
+	margin-bottom: 0px;
+	border-radius: 3px;
+}
 .book-info {
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
 	max-height: 80px;
 }
+
+.book-info.mini {
+	max-height: 40px;
+}
+
 .book-info .title {
 	font-weight: bold;
 	font-size: 1.1em;
 	font-family: 'Garamond', serif;
+	padding-top: 5px;
+}
+
+.book-info .title.mini {
+	font-size: 0.8em;
+	line-height: normal;
 }
 
 .book-info .author {
 	font-size: 0.9em;
 	font-style: italic;
 	min-height: max-content;
+}
+
+.book-info .author.mini {
+	display: none;
 }
 </style>
