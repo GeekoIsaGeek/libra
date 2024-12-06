@@ -7,6 +7,7 @@ import Select from '@/components/UI/Select.vue';
 import useLocale from '@/composables/useLocale.js';
 import { RouterLink } from 'vue-router';
 import Filters from '@/components/filters/Filters.vue';
+import TransitionWrapper from '@/layouts/TransitionWrapper.vue';
 
 const { locale } = useLocale();
 
@@ -57,7 +58,7 @@ const handleSearch = () => {
 <template>
 	<div class="relative w-full lg:w-[60%]">
 		<div
-			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl ${
+			:class="`px-4 py-2 flex items-center gap-2 bg-white border border-gray-500 shadow rounded-3xl transition-all duration-50 ease-out ${
 				showResults || showFilters ? 'rounded-b-none' : '!rounded-b-3xl'
 			}`"
 		>
@@ -96,6 +97,8 @@ const handleSearch = () => {
 			</template>
 		</Select>
 
-		<Filters v-if="showFilters" @handleMouseLeave="() => (showFilters = false)" />
+		<TransitionWrapper duration="50" transitionClass="!translate-y-[-20px]">
+			<Filters v-if="showFilters" @handleMouseLeave="() => (showFilters = false)" />
+		</TransitionWrapper>
 	</div>
 </template>

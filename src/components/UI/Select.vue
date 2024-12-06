@@ -1,5 +1,6 @@
 <script setup>
 import ArrowDownIcon from '@/components/icons/ArrowDownIcon.vue';
+import TransitionWrapper from '@/layouts/TransitionWrapper.vue';
 
 defineProps({
 	options: {
@@ -26,6 +27,12 @@ defineProps({
 	optionClass: {
 		type: String,
 	},
+	withoutAnimation: {
+		type: Boolean,
+	},
+	animationDuration: {
+		type: Number,
+	},
 });
 
 defineEmits(['update:showDropdown']);
@@ -42,25 +49,27 @@ defineEmits(['update:showDropdown']);
 			<ArrowDownIcon :class="`icon ${showDropdown ? 'rotate-180' : ''}`" />
 		</div>
 
-		<ul
-			class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow max-h-48 overflow-y-auto z-30"
-			:class="optionsWrapperClass || ''"
-			v-if="showDropdown"
-			@mouseleave="$emit('update:showDropdown', false)"
-		>
-			<li
-				v-for="(option, i) in options"
-				:key="option?.id || option"
-				@click="() => selectHandler(option)"
-				class="flex items-center gap-3 w-full px-2 hover:bg-gold/60 transition-colors duration-200 ease-out py-1"
-				:class="[optionClass && optionClass, lastOptionClass && i === options.length - 1 ? lastOptionClass : '']"
+		<TransitionWrapper :off="withoutAnimation" duration="animationDuration">
+			<ul
+				class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow max-h-48 overflow-y-auto z-30"
+				:class="optionsWrapperClass || ''"
+				v-if="showDropdown"
+				@mouseleave="$emit('update:showDropdown', false)"
 			>
-				<slot name="option" :option="option" />
-			</li>
+				<li
+					v-for="(option, i) in options"
+					:key="option?.id || option"
+					@click="() => selectHandler(option)"
+					class="flex items-center gap-3 w-full px-2 hover:bg-gold/60 transition-colors duration-200 ease-out py-1"
+					:class="[optionClass && optionClass, lastOptionClass && i === options.length - 1 ? lastOptionClass : '']"
+				>
+					<slot name="option" :option="option" />
+				</li>
 
-			<p class="w-full !rounded-b-3xl py-3 px-4 text-center" v-if="!options.length">
-				{{ $t('general.nothingFound') }}
-			</p>
-		</ul>
+				<p class="w-full !rounded-b-3xl py-3 px-4 text-center" v-if="!options.length">
+					{{ $t('general.nothingFound') }}
+				</p>
+			</ul>
+		</TransitionWrapper>
 	</div>
 </template>
