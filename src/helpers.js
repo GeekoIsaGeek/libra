@@ -48,6 +48,6 @@ export const addToRecentlyViewed = (book) => {
 		recentlyViewed.shift();
 	}
 
-	recentlyViewed.push(book);
-	localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed.reverse()));
+	recentlyViewed.unshift(book);
+	localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
 };
