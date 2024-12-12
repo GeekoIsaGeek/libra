@@ -3,14 +3,29 @@ import GE from '@/assets/images/georgia.png';
 import UK from '@/assets/images/united-kingdom.png';
 import useLocale from '@/composables/useLocale';
 import { locales } from '@/config/localization';
-import { ref } from 'vue';
+import { ref, defineProps, computed } from 'vue';
 import Select from '@/components/UI/Select.vue';
 
-const { setLocale, locale } = useLocale();
+const props = defineProps({
+	customHandler: {
+		type: Function,
+	},
+	inputLocale: {
+		type: String,
+	},
+});
+
+const { setLocale, locale: appLocale } = useLocale();
 const showDropdown = ref(false);
 
+const locale = computed(() => props?.inputLocale || appLocale.value);
+
 const switchLanguage = ([loc, lang]) => {
-	setLocale(loc);
+	if (props.customHandler) {
+		props.customHandler(loc);
+	} else {
+		setLocale(loc);
+	}
 	showDropdown.value = false;
 };
 </script>

@@ -84,11 +84,11 @@ const handleSearch = () => {
 			:options="results"
 			:lastOptionClass="results.length > 0 ? '!rounded-b-3xl' : ''"
 			:optionsWrapperClass="`${results.length > 0 ? 'rounded-b-3xl rounded-t-none' : 'rounded-b-3xl'}`"
-			optionClass="px-4 py-2"
+			optionClass="px-4"
 			:selectHandler="() => null"
 		>
 			<template v-slot:option="{ option: book }">
-				<RouterLink :to="`books/${book?.slug}`" class="flex justify-between w-full gap-1 sm:gap-2">
+				<RouterLink :to="`books/${book?.slug}`" class="flex justify-between w-full gap-1 sm:gap-2 py-2">
 					<h3 class="w-full">{{ book?.['title']?.[locale] }} {{ book?.['year'] ? `(${book.year})` : '' }}</h3>
 					<span class="min-w-max text-xs sm:text-sm self-center font-medium">{{
 						book?.['author']?.[locale]

@@ -49,7 +49,7 @@ defineEmits(['update:showDropdown']);
 			<ArrowDownIcon :class="`icon ${showDropdown ? 'rotate-180' : ''}`" />
 		</div>
 
-		<TransitionWrapper :off="withoutAnimation" duration="animationDuration">
+		<TransitionWrapper :off="withoutAnimation" :duration="animationDuration">
 			<ul
 				class="absolute flex flex-col items-start w-full bg-white border border-gray-500 rounded-md text-black cursor-pointer shadow max-h-48 overflow-y-auto z-30"
 				:class="optionsWrapperClass || ''"
