@@ -12,4 +12,14 @@ export default {
 		language: 'Language',
 		recentlyViewed: 'Recently viewed books',
 	},
+	bookForm: {
+		add: {
+			title: 'Add new E-book',
+			submit: 'Add',
+		},
+		edit: {
+			title: 'Edit E-book',
+			submit: 'Save',
+		},
+	},
 };

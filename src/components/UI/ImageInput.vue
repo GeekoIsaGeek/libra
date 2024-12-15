@@ -6,6 +6,10 @@ const emit = defineEmits<{
 	setPhoto: [selected: string];
 }>();
 
+const props = defineProps({
+	initialPhoto: String,
+});
+
 const selectedImage = ref<File>();
 const canShowModal = ref(false);
 
@@ -26,7 +30,7 @@ const handleChange = (e: Event) => {
 };
 
 const imageUrl = computed(() => {
-	return selectedImage.value ? URL.createObjectURL(selectedImage.value) : '';
+	return selectedImage.value ? URL.createObjectURL(selectedImage.value) : props.initialPhoto;
 });
 </script>
 
@@ -36,7 +40,9 @@ const imageUrl = computed(() => {
 		:class="{ 'py-5': !imageUrl }"
 	>
 		<TheAddImageIcon class="fill-wheat w-7 h-7" v-if="!imageUrl" />
+
 		<img :src="imageUrl" v-else="imageUrl" class="w-full h-full rounded object-cover" />
+
 		<input
 			type="file"
 			accept="image/jpeg, iamge/png, image/webp"

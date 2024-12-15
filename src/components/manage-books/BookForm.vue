@@ -1,21 +1,17 @@
 <script setup>
-import { computed, reactive, ref, watchEffect } from 'vue';
+import { reactive, ref, watchEffect } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
-import TagsInput from '@/components/add/TagsInput.vue';
+import TagsInput from '@/components/manage-books/TagsInput.vue';
 import ImageInput from '@/components/UI/ImageInput.vue';
 import CustomInputWrapper from '@/components/common/CustomInputWrapper.vue';
 
-const bookDetails = reactive({
-	title: { en: '', ka: '' },
-	author: { en: '', ka: '' },
-	description: { en: '', ka: '' },
-	year: '',
-	pages: '',
-	tags: ['romance'],
-	language: '',
-	image: '',
+const props = defineProps({
+	bookData: Object,
+	mode: 'add' | 'edit',
 });
+
+const bookDetails = reactive(props.bookData);
 
 const inputLocale = ref('ka');
 
@@ -28,20 +24,16 @@ const handleTagRemove = (tag) => {
 	if (tag === '') return;
 	bookDetails.tags = bookDetails.tags.filter((t) => t.toLowerCase() !== tag.toLowerCase());
 };
-
-watchEffect(() => {
-	console.log(bookDetails);
-});
 </script>
 
 <template>
 	<div class="my-14 rounded-sm self-center flex flex-col items-center w-full">
-		<h1 class="text-3xl font-medium">Add new E-book</h1>
+		<h1 class="text-3xl font-medium">{{ $t(`bookForm.${mode}.title`) }}</h1>
 
 		<div
 			class="w-3/5 flex flex-col pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"
 		>
-			<div class="flex items-center gap-4 mt-5 mb-14">
+			<div class="flex items-center gap-4 mt-5 mb-10">
 				Input language:
 				<LanguageSwitcher :customHandler="(loc) => (inputLocale = loc)" :inputLocale="inputLocale" />
 			</div>
@@ -87,8 +79,16 @@ watchEffect(() => {
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
 
 				<CustomInputWrapper label="Cover">
-					<ImageInput @setPhoto="(image) => (bookDetails.image = image)" />
+					<ImageInput @setPhoto="(image) => (bookDetails.image = image)" :initialPhoto="bookDetails.image" />
 				</CustomInputWrapper>
+
+				<button
+					type="submit"
+					@click.prevent
+					class="mt-5 py-2 px-20 bg-wheat rounded-full self-center text-darkestBrown font-semibold hover:saturate-200 transition-all duration-200 ease-out"
+				>
+					{{ $t(`bookForm.${mode}.submit`) }}
+				</button>
 			</form>
 		</div>
 	</div>
