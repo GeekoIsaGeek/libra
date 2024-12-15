@@ -38,7 +38,7 @@ defineProps({
 			:placeholder="placeholder"
 			:value="value"
 			@input="(event) => inputHandler(event.target.value)"
-			class="border h-[54px] border-gold resize-none text-wheat outline-none border-l-0 py-1.5 px-3 rounded-r-md w-full bg-lightBrown/10 placeholder:text-wheat/80"
+			class="border h-[80px] border-gold resize-none text-wheat outline-none border-l-0 py-1.5 px-3 rounded-r-md w-full bg-lightBrown/10 placeholder:text-wheat/80"
 		>
 		</textarea>
 		<input

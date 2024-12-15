@@ -1,21 +1,21 @@
-<script lang="ts" setup>
+<script setup>
 import TheAddImageIcon from '@/components/icons/AddImageIcon.vue';
 import { computed, ref } from 'vue';
 
-const emit = defineEmits<{
-	setPhoto: [selected: string];
-}>();
+const emit = defineEmits({
+	setPhoto: Function,
+});
 
 const props = defineProps({
 	initialPhoto: String,
 });
 
-const selectedImage = ref<File>();
+const selectedImage = ref();
 const canShowModal = ref(false);
 
-const handleChange = (e: Event) => {
-	const target = e.currentTarget as HTMLInputElement;
-	const selectedFile = (target.files as FileList)[0];
+const handleChange = (e) => {
+	const target = e.currentTarget;
+	const selectedFile = target.files[0];
 
 	if (!selectedFile) {
 		selectedImage.value = null;

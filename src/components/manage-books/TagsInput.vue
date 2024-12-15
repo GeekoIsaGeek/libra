@@ -20,11 +20,11 @@ const handleTagAdd = () => {
 
 <template>
 	<CustomInputWrapper label="Tags">
-		<div class="flex justify-between flex-wrap">
+		<div class="flex justify-between flex-wrap gap-1">
 			<SelectGenre class="w-max mt-1" :selectHandler="addHandler" />
 			<input
 				type="text"
-				class="rounded-xl outline-none text-black px-2 py-1"
+				class="rounded-xl outline-none text-black px-2 py-1 max-w-full"
 				placeholder="Custom tag..."
 				@keyup.enter="handleTagAdd"
 				v-model="input"

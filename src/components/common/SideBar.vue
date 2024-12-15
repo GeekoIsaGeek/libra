@@ -1,6 +1,10 @@
+<script></script>
+
 <template>
 	<div class="sidebar">
-		<h1>Library</h1>
+		<h1>
+			<RouterLink :to="{ name: 'home' }">Library</RouterLink>
+		</h1>
 	</div>
 </template>
 
