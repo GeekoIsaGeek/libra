@@ -1,8 +1,10 @@
 <script setup>
-import { onMounted, reactive, ref, capitalize } from 'vue';
+import { computed, reactive, ref, watchEffect } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/add/TagsInput.vue';
+import ImageInput from '@/components/UI/ImageInput.vue';
+import CustomInputWrapper from '@/components/common/CustomInputWrapper.vue';
 
 const bookDetails = reactive({
 	title: { en: '', ka: '' },
@@ -26,6 +28,10 @@ const handleTagRemove = (tag) => {
 	if (tag === '') return;
 	bookDetails.tags = bookDetails.tags.filter((t) => t.toLowerCase() !== tag.toLowerCase());
 };
+
+watchEffect(() => {
+	console.log(bookDetails);
+});
 </script>
 
 <template>
@@ -79,6 +85,10 @@ const handleTagRemove = (tag) => {
 				/>
 
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
+
+				<CustomInputWrapper label="Cover">
+					<ImageInput @setPhoto="(image) => (bookDetails.image = image)" />
+				</CustomInputWrapper>
 			</form>
 		</div>
 	</div>
