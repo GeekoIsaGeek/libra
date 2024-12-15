@@ -10,10 +10,19 @@ import { storeToRefs } from 'pinia';
 const showGenres = ref(false);
 const { locale } = useLocale();
 
+const props = defineProps({
+	selectHandler: Function,
+});
+
 const { genre } = storeToRefs(useFilterStore());
 const { filterBooks } = useFilterStore();
 
 const handleSelect = (selectedValue) => {
+	if (props.selectHandler) {
+		props.selectHandler(selectedValue);
+		showGenres.value = false;
+		return;
+	}
 	genre.value = selectedValue;
 	showGenres.value = false;
 	filterBooks();

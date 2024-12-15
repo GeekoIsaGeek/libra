@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, capitalize } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/add/TagsInput.vue';
@@ -10,16 +10,22 @@ const bookDetails = reactive({
 	description: { en: '', ka: '' },
 	year: '',
 	pages: '',
-	tags: [],
+	tags: ['romance'],
 	language: '',
 	image: '',
 });
 
 const inputLocale = ref('ka');
 
-onMounted(() => {
-	console.log(bookDetails);
-});
+const handleTagAdd = (tag) => {
+	if (tag === '' || bookDetails.tags.includes(tag.toLowerCase())) return;
+	bookDetails.tags.push(tag.toLowerCase());
+};
+
+const handleTagRemove = (tag) => {
+	if (tag === '') return;
+	bookDetails.tags = bookDetails.tags.filter((t) => t.toLowerCase() !== tag.toLowerCase());
+};
 </script>
 
 <template>
@@ -72,7 +78,7 @@ onMounted(() => {
 					:inputHandler="(val) => (bookDetails.description[inputLocale] = val)"
 				/>
 
-				<TagsInput />
+				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
 			</form>
 		</div>
 	</div>
