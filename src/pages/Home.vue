@@ -9,5 +9,6 @@ const { isAnyFilterSet } = storeToRefs(useFilterStore());
 
 <template>
 	<Header />
-	<BookListing v-if="isAnyFilterSet" />
+	<!-- This should be rendered conditionally -->
+	<BookListing />
 </template>

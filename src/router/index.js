@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '@/pages/Home.vue';
 import NotFound from '@/pages/NotFound.vue';
 import DetailsPage from '@/pages/DetailsPage.vue';
@@ -6,7 +6,7 @@ import AddBook from '@/components/manage-books/AddBook.vue';
 import EditBook from '@/components/manage-books/EditBook.vue';
 
 export default createRouter({
-	history: createWebHistory(import.meta.env.BASE_URL),
+	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
 			path: '/',
