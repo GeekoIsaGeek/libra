@@ -12,6 +12,23 @@ export default {
 		language: 'ენა',
 		recentlyViewed: 'ბოლოს ნანახი წიგნები',
 	},
+	bookForm: {
+		add: {
+			title: 'ელ-წიგნის დამატება',
+			submit: 'დამატება',
+		},
+		edit: {
+			title: 'ელ-წიგნის რედაქტირება',
+			submit: 'შენახვა',
+		},
+		inputLang: 'შეყვანის ენა',
+		fields: {
+			title: {
+				label: 'სათაური',
+				placeholder: 'წიგნის სათაური',
+			},
+		},
+	},
 
 	// Order of languages and genres should be the same as in the constants file
 	languages: ['ინგლისური', 'ქართული'],

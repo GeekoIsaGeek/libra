@@ -28,8 +28,9 @@ defineProps({
 	<div class="flex h-max shadow-md">
 		<label
 			:for="name"
-			class="bg-almostBlack/20 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border border-gold rounded-l-md"
-			>{{ label }}</label
+			class="bg-almostBlack/20 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border border-gold rounded-l-md select-none min-w-max"
+		>
+			{{ label }}</label
 		>
 		<textarea
 			v-if="type === 'textarea'"
@@ -45,7 +46,7 @@ defineProps({
 			v-else
 			:type="type"
 			:name="name"
-			:placeholder="placeholder"
+			:placeholder="placeholder || '...'"
 			:value="value"
 			@input="(event) => inputHandler(event.target.value)"
 			class="border border-gold text-wheat outline-none border-l-0 py-1.5 px-3 rounded-r-md w-full bg-lightBrown/10 placeholder:text-wheat/80"

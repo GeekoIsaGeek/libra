@@ -25,7 +25,7 @@ const handleTagAdd = () => {
 			<input
 				type="text"
 				class="rounded-xl outline-none text-black px-2 py-1 max-w-full"
-				placeholder="Custom tag..."
+				:placeholder="$t('bookForm.fields.tags.customTag')"
 				@keyup.enter="handleTagAdd"
 				v-model="input"
 			/>

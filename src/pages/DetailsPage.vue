@@ -4,7 +4,7 @@ import useLocale from '@/composables/useLocale';
 import Books from '/dummy-books.json';
 import GenreTag from '@/components/common/GenreTag.vue';
 import { capitalize, onMounted, ref } from 'vue';
-import { addToRecentlyViewed } from '../helpers';
+import { addToRecentlyViewed } from '@/helpers.js';
 
 const { params } = useRoute();
 const { locale } = useLocale();

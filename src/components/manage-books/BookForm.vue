@@ -34,43 +34,43 @@ const handleTagRemove = (tag) => {
 			class="w-full xl:w-3/5 flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"
 		>
 			<div class="flex flex-wrap justify-center items-center gap-4 mt-5 mb-10">
-				Input language:
+				{{ $t('bookForm.inputLang') }}:
 				<LanguageSwitcher :customHandler="(loc) => (inputLocale = loc)" :inputLocale="inputLocale" />
 			</div>
 
 			<form class="md:w-1/2 flex flex-col gap-6">
 				<FormInput
 					name="title"
-					placeholder="Enter book title"
-					label="Title"
+					:placeholder="$t('bookForm.fields.title.placeholder')"
+					:label="$t('bookForm.fields.title.label')"
 					:value="bookDetails.title[inputLocale]"
 					:inputHandler="(val) => (bookDetails.title[inputLocale] = val)"
 				/>
 				<FormInput
 					name="author"
-					placeholder="Enter a name of the author"
-					label="Author"
+					:placeholder="$t('bookForm.fields.author.placeholder')"
+					:label="$t('bookForm.fields.author.label')"
 					:value="bookDetails.author[inputLocale]"
 					:inputHandler="(val) => (bookDetails.author[inputLocale] = val)"
 				/>
 				<FormInput
 					name="year"
-					placeholder="Enter the year published"
-					label="Year"
+					:placeholder="$t('bookForm.fields.year.placeholder')"
+					:label="$t('bookForm.fields.year.label')"
 					:value="bookDetails.year"
 					:inputHandler="(val) => (bookDetails.year = val)"
 				/>
 				<FormInput
 					name="pages"
-					placeholder="Enter count of pages"
-					label="Pages"
+					:placeholder="$t('bookForm.fields.pages.placeholder')"
+					:label="$t('bookForm.fields.pages.label')"
 					:value="bookDetails.pages"
 					:inputHandler="(val) => (bookDetails.pages = val)"
 				/>
 				<FormInput
 					name="description"
-					placeholder="Enter book description..."
-					label="Description"
+					:placeholder="$t('bookForm.fields.description.placeholder')"
+					:label="$t('bookForm.fields.description.label')"
 					type="textarea"
 					:value="bookDetails.description[inputLocale]"
 					:inputHandler="(val) => (bookDetails.description[inputLocale] = val)"
@@ -78,7 +78,7 @@ const handleTagRemove = (tag) => {
 
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
 
-				<CustomInputWrapper label="Cover">
+				<CustomInputWrapper :label="$t('bookForm.fields.cover.label')">
 					<ImageInput @setPhoto="(image) => (bookDetails.image = image)" :initialPhoto="bookDetails.image" />
 				</CustomInputWrapper>
 
