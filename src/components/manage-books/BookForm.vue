@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, watchEffect } from 'vue';
+import { reactive, ref } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/manage-books/TagsInput.vue';

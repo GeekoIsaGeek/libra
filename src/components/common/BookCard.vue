@@ -23,8 +23,8 @@ const { locale } = useLocale();
 				<img :src="book?.image" :alt="book?.title?.[locale]" :class="`${isSmall && 'mini'}`" />
 			</div>
 			<div :class="`book-info ${isSmall && 'mini'}`">
-				<div :class="`title ${isSmall && 'mini'}`">{{ book?.title?.[locale] }}</div>
-				<div :class="`author ${isSmall && 'mini'}`">{{ book?.author?.[locale] }}</div>
+				<p :class="`title ${isSmall && 'mini'}`">{{ book?.title?.[locale] }}</p>
+				<p :class="`author ${isSmall && 'mini'}`">{{ book?.author?.[locale] }}</p>
 			</div>
 		</RouterLink>
 	</div>
@@ -45,6 +45,9 @@ const { locale } = useLocale();
 	position: relative;
 	display: flex;
 	flex-direction: column;
+}
+.book-info > p {
+	word-wrap: break-word;
 }
 .book.mini {
 	width: 100px;
@@ -78,7 +81,7 @@ const { locale } = useLocale();
 }
 
 .book-info.mini {
-	max-height: 40px;
+	max-height: 44px;
 }
 
 .book-info .title {
