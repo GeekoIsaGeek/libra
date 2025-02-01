@@ -17,12 +17,7 @@ const { locale } = useLocale();
 </script>
 
 <template>
-	<div
-		:class="`book ${isSmall && 'mini'}`"
-		:data-title="book?.title?.[locale]"
-		:data-author="book?.author?.[locale]"
-		style="--delay: 2"
-	>
+	<div :class="`book ${isSmall && 'mini'}`">
 		<RouterLink :to="`books/${book?.slug}`" class="book-title">
 			<div class="img-wrapper">
 				<img :src="book?.image" :alt="book?.title?.[locale]" :class="`${isSmall && 'mini'}`" />
