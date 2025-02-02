@@ -2,24 +2,18 @@
 import FormInput from '@/components/UI/FormInput.vue';
 import SubmitButton from '@/components/UI/SubmitButton.vue';
 import AuthForm from '@/components/forms/AuthForm.vue';
-import { ref, reactive } from 'vue';
+import { reactive } from 'vue';
 
-const email = ref('');
-const password = ref('');
-
-const initialErrors = {
-	username: '',
+const loginFormData = reactive({
+	email: '',
 	password: '',
-	passwordConfirmation: '',
-};
-
-const errors = reactive(initialErrors);
+});
 
 const handleLogin = async (event) => {
 	event.preventDefault();
 
 	try {
-		console.log(email.value, password.value);
+		console.log(loginFormData);
 	} catch (error) {
 		console.error(error);
 	}
@@ -27,22 +21,24 @@ const handleLogin = async (event) => {
 </script>
 
 <template>
-	<AuthForm :submitHandler="handleLogin" :errors="Object.entries(errors)">
+	<AuthForm :submitHandler="handleLogin">
 		<FormInput
 			name="email"
 			type="email"
 			:label="$t('auth.email')"
 			:placeholder="$t('auth.emailPlaceholder')"
-			:inputHandler="(value) => (email = value)"
+			:inputHandler="(value) => (loginFormData.email = value)"
+			:value="loginFormData.email"
 		/>
 		<FormInput
 			name="password"
 			type="password"
 			:label="$t('auth.password')"
 			:placeholder="$t('auth.passwordPlaceholder')"
-			:inputHandler="(value) => (password = value)"
+			:inputHandler="(value) => (loginFormData.password = value)"
+			:value="loginFormData.password"
 		/>
-		<SubmitButton :content="$t('auth.login')" class="mt-5 w-1/2" />
+		<SubmitButton :content="$t('auth.login')" class="mt-5" />
 		<RouterLink to="/register" class="text-fadedPrimary underline hover:text-gray-400">{{
 			$t('auth.register')
 		}}</RouterLink>

@@ -58,7 +58,7 @@ export default {
 		password: 'Password',
 		register: 'Register',
 		username: 'Username',
-		passwordConfirmation: 'Confirm',
+		passwordConfirmation: 'Confirm-PW',
 		passwordConfirmationPlaceholder: 'Repeat password',
 		emailPlaceholder: 'Enter email',
 		passwordPlaceholder: 'Enter password',
@@ -67,7 +67,8 @@ export default {
 	errors: {
 		required: 'This field is required',
 		email: 'Invalid email',
-		password: 'Password must be at least 8 characters long and contain at least one uppercase letter',
+		username: 'Username must be at least 3 characters long',
+		password: 'Password must be at least 8 characters long and contain at least one digit',
 		passwordConfirmation: 'Passwords do not match',
 	},
 };

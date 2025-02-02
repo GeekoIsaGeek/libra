@@ -10,7 +10,11 @@ export default {
 				mediumBrown: '#9f8962',
 				darkestBrown: '#2e2e2e',
 				almostBlack: '#181818',
+				pinkishRed: '#fd1d5a',
 			},
+		},
+		screens: {
+			desktop: '1024px',
 		},
 	},
 	plugins: [],

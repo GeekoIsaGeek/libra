@@ -51,3 +51,9 @@ export const addToRecentlyViewed = (book) => {
 	recentlyViewed.unshift(book);
 	localStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
 };
+
+export const clearState = (object) => {
+	Object.keys(object).forEach((key) => {
+		object[key] = '';
+	});
+};

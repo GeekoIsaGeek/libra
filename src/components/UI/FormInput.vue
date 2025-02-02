@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import Error from '@/components/UI/Error.vue';
+
+const props = defineProps({
 	label: {
 		type: String,
 		required: true,
@@ -21,35 +23,42 @@ defineProps({
 	inputHandler: {
 		type: Function,
 	},
+	error: {
+		type: String,
+	},
 });
 </script>
 
 <template>
-	<div class="flex h-max shadow-md">
-		<label
-			:for="name"
-			class="bg-almostBlack/20 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border border-gold rounded-l-md select-none min-w-max"
-		>
-			{{ label }}</label
-		>
-		<textarea
-			v-if="type === 'textarea'"
-			:type="type"
-			:name="name"
-			:placeholder="placeholder"
-			:value="value"
-			@input="(event) => inputHandler(event.target.value)"
-			class="border h-[80px] border-gold resize-none text-wheat outline-none border-l-0 py-1.5 px-3 rounded-r-md w-full bg-lightBrown/10 placeholder:text-wheat/80"
-		>
-		</textarea>
-		<input
-			v-else
-			:type="type"
-			:name="name"
-			:placeholder="placeholder || '...'"
-			:value="value"
-			@input="(event) => inputHandler(event.target.value)"
-			class="border border-gold text-wheat outline-none border-l-0 py-1.5 px-3 rounded-r-md w-full bg-lightBrown/10 placeholder:text-wheat/80"
-		/>
+	<div class="flex flex-col gap-2 desktop:w-[75%] w-[90%]">
+		<div class="flex h-max shadow-md border border-gold rounded-md" :class="{ 'border-pinkishRed': error }">
+			<label
+				:for="name"
+				class="bg-almostBlack/20 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border-r border-r-gold rounded-l-md select-none min-w-max"
+				:class="{ '!border-pinkishRed': error }"
+			>
+				{{ label }}</label
+			>
+			<textarea
+				v-if="type === 'textarea'"
+				:type="type"
+				:name="name"
+				:placeholder="placeholder"
+				:value="value"
+				@input="(event) => inputHandler(event.target.value)"
+				class="h-[80px] resize-none text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/10 placeholder:text-wheat/80"
+			>
+			</textarea>
+			<input
+				v-else
+				:type="type"
+				:name="name"
+				:placeholder="placeholder || '...'"
+				:value="value"
+				@input="(event) => inputHandler(event.target.value)"
+				class="text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/10 placeholder:text-wheat/80"
+			/>
+		</div>
+		<Error v-if="error">{{ error }}</Error>
 	</div>
 </template>
