@@ -31,7 +31,7 @@ const handleTagRemove = (tag) => {
 		<h1 class="text-3xl font-medium">{{ $t(`bookForm.${mode}.title`) }}</h1>
 
 		<div
-			class="w-full xl:w-3/5 flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"
+			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"
 		>
 			<div class="flex flex-wrap justify-center items-center gap-4 mt-5 mb-10">
 				{{ $t('bookForm.inputLang') }}:

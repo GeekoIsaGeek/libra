@@ -30,7 +30,7 @@ const props = defineProps({
 </script>
 
 <template>
-	<div class="flex flex-col gap-2 desktop:w-[75%] w-[90%]">
+	<div class="flex flex-col gap-2 w-full">
 		<div class="flex h-max shadow-md border border-gold rounded-md" :class="{ 'border-pinkishRed': error }">
 			<label
 				:for="name"

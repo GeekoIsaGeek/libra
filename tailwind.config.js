@@ -13,9 +13,6 @@ export default {
 				pinkishRed: '#fd1d5a',
 			},
 		},
-		screens: {
-			desktop: '1024px',
-		},
 	},
 	plugins: [],
 };
