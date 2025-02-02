@@ -3,7 +3,7 @@
 <template>
 	<div class="sidebar">
 		<h1>
-			<RouterLink :to="{ name: 'home' }">Library</RouterLink>
+			<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
 		</h1>
 	</div>
 </template>
@@ -18,6 +18,7 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	padding: 0 40px;
 }
 
 .sidebar h1 {
@@ -32,7 +33,11 @@
 	border-bottom: 2px solid #c6a965;
 	padding-bottom: 15px;
 }
-
+@media screen and (max-width: 1024px) {
+	.sidebar {
+		padding: 0 20px;
+	}
+}
 @media screen and (max-width: 640px) {
 	.sidebar {
 		display: none;

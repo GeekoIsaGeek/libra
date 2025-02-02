@@ -23,6 +23,13 @@ defineProps({
 	font-family: 'Garamond', serif;
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 	cursor: pointer;
+	min-width: max-content;
+}
+
+@media screen and (max-width: 640px) {
+	.tag {
+		font-size: 0.8em;
+	}
 }
 
 .tag:hover {

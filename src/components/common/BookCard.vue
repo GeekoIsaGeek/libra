@@ -105,4 +105,27 @@ const { locale } = useLocale();
 .book-info .author.mini {
 	display: none;
 }
+
+@media (max-width: 1100px) {
+	.book {
+		width: 150px;
+		height: 220px;
+	}
+
+	.book img {
+		height: 120px;
+	}
+
+	.book-info {
+		max-height: 50px;
+	}
+
+	.book-info .title {
+		font-size: 0.9em;
+	}
+
+	.book-info .author {
+		font-size: 0.7em;
+	}
+}
 </style>
