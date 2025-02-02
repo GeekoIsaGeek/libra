@@ -31,7 +31,7 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center mt-16 w-full h-full justify-start">
+	<div class="flex flex-col items-center mt-8 sm:mt-16 w-full h-full justify-start">
 		<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
@@ -41,7 +41,7 @@ onMounted(() => {
 				:alt="book?.title?.[locale]"
 			/>
 
-			<div class="xl:mt-0 sm:w-[80%] xl:w-[40%] p-10 lg:pr-0 flex items-start justify-center flex-col gap-5">
+			<div class="xl:mt-0 sm:w-[80%] xl:w-[40%] py-5 px-10 lg:pr-0 flex items-start justify-center flex-col gap-5">
 				<p class="lg:text-lg">{{ book?.description?.[locale] }}</p>
 
 				<ul class="lg:text-lg list-disc list-inside">
@@ -62,7 +62,7 @@ onMounted(() => {
 					</li>
 				</ul>
 
-				<ul class="lg:mt-10 flex md:gap-2 items-center justify-start shadow">
+				<ul class="lg:mt-5 flex md:gap-2 items-center justify-start shadow">
 					<GenreTag
 						v-for="tag in book?.tags"
 						:key="tag"

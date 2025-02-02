@@ -5,6 +5,7 @@
 		<h1>
 			<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
 		</h1>
+		<div class="separator"></div>
 	</div>
 </template>
 
@@ -18,7 +19,12 @@
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	padding: 0 40px;
+}
+.separator {
+	width: 100%;
+	height: 1px;
+	background-color: #c6a965;
+	margin: 20px 0;
 }
 
 .sidebar h1 {
@@ -30,15 +36,10 @@
 	text-transform: uppercase;
 	margin-top: 36px;
 	letter-spacing: 2px;
-	border-bottom: 2px solid #c6a965;
-	padding-bottom: 15px;
+	padding-bottom: 10px;
+	padding: 0 40px;
 }
-@media screen and (max-width: 1024px) {
-	.sidebar {
-		padding: 0 20px;
-	}
-}
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 920px) {
 	.sidebar {
 		display: none;
 	}
