@@ -14,12 +14,16 @@
 				"en": "The Catcher in the Rye is a novel by J. D. Salinger, partially published in serial form in 1945–1946 and as a novel in 1951. It was originally intended for adults, but is often read by adolescents for its themes of angst and alienation, and as a critique on superficiality in society. It has been translated widely. Around one million copies are sold each year, with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
 				"ka": "თამაში ჭვავის ყანაში არის ჯ. დ. სელინჯერის რომანი, რომელიც ნაწილობრივ გამოქვეყნდა 1945–1946 წლებში და რომელიც რომელიც გამოქვეყნდა 1951 წელს. პირველივე იყო დამჭირებლებისთვის, მაგრამ ხშირად წაიკითხება ა"
 			},
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"year": 1951,
 			"pages": 540,
 			"tags": ["fiction", "novel", "classic", "romance"],
-			"language": "english",
 			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg",
-			"slug": "the-cather-in-the-rye-by-salinger"
+			"slug": "the-cather-in-the-rye-by-salinger",
+			"link": "https://giove.isti.cnr.it/demo/eread/Libri/sad/Rye.pdf"
 		},
 		{
 			"id": 2,
@@ -35,10 +39,13 @@
 				"en": "The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald. Set in the Jazz Age on Long Island, near New York City, the novel depicts first-person narrator Nick Carraway's interactions with mysterious millionaire Jay Gatsby and Gatsby's obsession to reunite with his former lover, Daisy Buchanan. The novel was inspired by a youthful romance Fitzgerald had with a socialite, and by parties he attended on Long Island's North Shore in 1922. The novel is widely regarded as a critique of the American Dream.",
 				"ka": "დიდი გეტსბი არის 1925 წლის რომანი ამერიკელ მწყემსე F. სკოტ ფიცჯერალდისას. რომელიც დაყვანილია ჯეზის დროში ლონგ აილენდში, ახლოს ნიუ-იორკში, რომელიც ნაწილობრივ აღწერს პირველ პირის ნარატორი ნიკ კარაუეის ინტერაქ"
 			},
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"year": 1925,
 			"pages": 180,
 			"tags": ["fiction", "novel", "classic"],
-			"language": "english",
 			"image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781524879761/the-great-gatsby-9781524879761_hr.jpg",
 			"slug": "the-great-gatsby-by-fitzgerald"
 		},
@@ -56,10 +63,13 @@
 				"en": "1984 is a dystopian social science fiction novel and cautionary tale, warning about the dangers of totalitarianism and extreme political ideology. The story follows Winston Smith, who struggles against a repressive regime that controls reality.",
 				"ka": "1984 არის დისტოპიური რომანი, რომელიც გვაფრთხილებს ტოტალიტარიზმის საფრთხეებზე. მთავარი გმირი, უინსტონ სმიტი, ცდილობს გაუმკლავდეს სისტემას, რომელიც რეალობას მანიპულირებს."
 			},
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"year": 1949,
 			"pages": 328,
 			"tags": ["fiction", "dystopian", "classic", "political"],
-			"language": "english",
 			"image": "https://i.ebayimg.com/images/g/u6wAAOSwwX1hN7xf/s-l1200.jpg",
 			"slug": "1984-by-orwell"
 		},
@@ -67,7 +77,7 @@
 			"id": 3,
 			"title": {
 				"en": "To Kill a Mockingbird",
-				"ka": "მოციქულის მოკვლა"
+				"ka": "ნუ მოკლავ ჯაფარას"
 			},
 			"author": {
 				"en": "Harper Lee",
@@ -77,10 +87,13 @@
 				"en": "To Kill a Mockingbird is a novel about racial injustice and moral growth in the Deep South during the 1930s, seen through the eyes of young Scout Finch. Her father, Atticus Finch, defends a black man falsely accused of a crime.",
 				"ka": "მოციქულის მოკვლა მოგვითხრობს რასობრივ უსამართლობაზე და მორალურ ზრდაზე ამერიკის სამხრეთში. მთავარი პერსონაჟი, სკაუტ ფინჩი, თვალს ადევნებს მის მამას, ატიკუს ფინჩს, რომელიც იცავს ცრუ ბრალდებულ შავკანიანს."
 			},
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"year": 1960,
 			"pages": 281,
 			"tags": ["fiction", "classic", "historical", "social issues"],
-			"language": "english",
 			"image": "https://cdn.britannica.com/21/182021-050-666DB6B1/book-cover-To-Kill-a-Mockingbird-many-1961.jpg",
 			"slug": "to-kill-a-mockingbird-by-harper-lee"
 		},
@@ -101,7 +114,10 @@
 			"year": 1932,
 			"pages": 311,
 			"tags": ["fiction", "dystopian", "science fiction", "classic"],
-			"language": "english",
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"image": "https://prodimage.images-bn.com/pimages/9780060850524_p0_v4_s1200x630.jpg",
 			"slug": "brave-new-world-by-huxley"
 		},
@@ -122,7 +138,10 @@
 			"year": 1866,
 			"pages": 671,
 			"tags": ["fiction", "classic", "psychological", "philosophy"],
-			"language": "russian",
+			"language": {
+				"en": "russian",
+				"ka": "რუსული"
+			},
 			"image": "https://i0.wp.com/fictitiousbookshelf.com/wp-content/uploads/2023/09/IMG_7353.jpeg?fit=595%2C900&ssl=1",
 			"slug": "crime-and-punishment-by-dostoevsky"
 		},
@@ -140,10 +159,13 @@
 				"en": "Moby-Dick is a novel about obsession, revenge, and fate. It follows Ishmael, a sailor who joins Captain Ahab's quest to hunt the giant white whale, Moby Dick.",
 				"ka": "მობი-დიკი არის რომანი აკვიატებაზე, შურისძიებაზე და ბედზე. მთავარი პერსონაჟი, იშმაელი, უერთდება კაპიტან ახაბის ექსპედიციას, რათა დააპატიმრონ გიგანტური თეთრი ვეშაპი, მობი-დიკი."
 			},
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"year": 1851,
 			"pages": 585,
 			"tags": ["fiction", "classic", "adventure", "sea"],
-			"language": "english",
 			"image": "https://m.media-amazon.com/images/I/71K4OH9CqOL._UF1000,1000_QL80_.jpg",
 			"slug": "moby-dick-by-melville"
 		},
@@ -161,10 +183,13 @@
 				"en": "One Hundred Years of Solitude is a multi-generational story of the Buendía family in the fictional town of Macondo, blending magic and reality in a stunning work of magical realism.",
 				"ka": "ასწლიანი მარტოობა მოგვითხრობს ბუენდიების ოჯახის ისტორიას გამოგონილ ქალაქ მაკონდოში, სადაც მაგია და რეალობა ერთმანეთში ირევა."
 			},
+			"language": {
+				"en": "spanish",
+				"ka": "ესპანური"
+			},
 			"year": 1967,
 			"pages": 417,
 			"tags": ["fiction", "classic", "magical realism", "historical"],
-			"language": "spanish",
 			"image": "https://m.media-amazon.com/images/I/81dy4cfPGuL._AC_UF1000,1000_QL80_.jpg",
 			"slug": "one-hundred-years-of-solitude-by-marquez"
 		},
@@ -185,7 +210,10 @@
 			"year": 1869,
 			"pages": 1225,
 			"tags": ["fiction", "classic", "historical", "epic"],
-			"language": "russian",
+			"language": {
+				"en": "russian",
+				"ka": "რუსული"
+			},
 			"image": "https://m.media-amazon.com/images/I/81W6BFaJJWL.jpg",
 			"slug": "war-and-peace-by-tolstoy"
 		},
@@ -205,8 +233,11 @@
 			},
 			"year": 1818,
 			"pages": 280,
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"tags": ["fiction", "classic", "gothic", "horror"],
-			"language": "english",
 			"image": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982146160/frankenstein-9781982146160_hr.jpg",
 			"slug": "frankenstein-by-shelley"
 		},
@@ -226,8 +257,11 @@
 			},
 			"year": 1890,
 			"pages": 254,
+			"language": {
+				"en": "english",
+				"ka": "ინგლისური"
+			},
 			"tags": ["fiction", "classic", "philosophical", "gothic"],
-			"language": "english",
 			"image": "https://m.media-amazon.com/images/I/71fm0Ap7JcL._AC_UF1000,1000_QL80_.jpg",
 			"slug": "the-picture-of-dorian-gray-by-wilde"
 		},
@@ -248,7 +282,10 @@
 			"year": 1869,
 			"pages": 667,
 			"tags": ["fiction", "classic", "philosophical", "psychological"],
-			"language": "russian",
+			"language": {
+				"en": "russian",
+				"ka": "რუსული"
+			},
 			"image": "https://m.media-amazon.com/images/I/71+1wWoYLJL._AC_UF1000,1000_QL80_.jpg",
 			"slug": "the-idiot-by-dostoevsky"
 		}

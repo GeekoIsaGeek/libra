@@ -28,7 +28,7 @@ const handleTagRemove = (tag) => {
 
 <template>
 	<div class="my-14 rounded-sm self-center flex flex-col items-center w-full">
-		<h1 class="text-3xl font-medium">{{ $t(`bookForm.${mode}.title`) }}</h1>
+		<h1 class="text-3xl font-medium text-center">{{ $t(`bookForm.${mode}.title`) }}</h1>
 
 		<div
 			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"

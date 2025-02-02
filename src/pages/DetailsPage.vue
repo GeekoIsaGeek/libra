@@ -5,6 +5,7 @@ import Books from '/dummy-books.json';
 import GenreTag from '@/components/common/GenreTag.vue';
 import { capitalize, onMounted, ref } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
+import BookIcon from '@/components/icons/BookIcon.vue';
 
 const { params } = useRoute();
 const { locale } = useLocale();
@@ -35,23 +36,27 @@ onMounted(() => {
 		<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
-			<img
-				class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
-				:src="book?.image"
-				:alt="book?.title?.[locale]"
-			/>
+			<a :href="book?.link" target="_blank">
+				<img
+					class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
+					:src="book?.image"
+					:alt="book?.title?.[locale]"
+				/>
+			</a>
 
-			<div class="xl:mt-0 sm:w-[80%] xl:w-[40%] py-5 px-10 lg:pr-0 flex items-start justify-center flex-col gap-5">
-				<p class="lg:text-lg">{{ book?.description?.[locale] }}</p>
+			<div
+				class="xl:mt-0 sm:w-[80%] xl:w-[40%] py-5 px-0 md:px-10 lg:pr-0 flex items-start justify-center flex-col gap-5"
+			>
+				<p class="lg:text-lg px-10 md:px-0">{{ book?.description?.[locale] }}</p>
 
-				<ul class="lg:text-lg list-disc list-inside">
+				<ul class="lg:text-lg list-disc list-inside pl-10 md:pl-0">
 					<li>
 						<span class="font-bold mr-1">{{ $t('bookForm.fields.author.label') }}:</span>
 						{{ book?.author?.[locale] }}
 					</li>
 					<li>
 						<span class="font-bold mr-1">{{ $t('filters.language') }}:</span>
-						{{ capitalize(book?.language || '') }}
+						{{ locale === 'ka' ? book?.language?.[locale] : capitalize(book?.language?.[locale] || '') }}
 					</li>
 					<li>
 						<span class="font-bold mr-1">{{ $t('bookForm.fields.year.label') }}:</span> {{ book?.year }}
@@ -62,7 +67,9 @@ onMounted(() => {
 					</li>
 				</ul>
 
-				<ul class="lg:mt-5 flex md:gap-2 items-center justify-start shadow">
+				<ul
+					class="lg:mt-5 px-10 md:px-0 flex flex-wrap justify-center md:gap-2 items-center sm:justify-start shadow"
+				>
 					<GenreTag
 						v-for="tag in book?.tags"
 						:key="tag"
@@ -70,6 +77,16 @@ onMounted(() => {
 						:tag="capitalize(tag)"
 					/>
 				</ul>
+
+				<a
+					href="/README.md"
+					download=""
+					target="_blank"
+					class="flex self-center lg:mr-10 xl:self-start gap-2 w-max justify-center py-2 text-black font-bold px-5 bg-lightBrown hover:bg-mediumBrown transition-colors rounded-lg mt-8"
+				>
+					<BookIcon class="icon fill-black" />
+					{{ $t('download') }}
+				</a>
 			</div>
 		</div>
 	</div>

@@ -71,4 +71,7 @@ export default {
 		password: 'Password must be at least 8 characters long and contain at least one digit',
 		passwordConfirmation: 'Passwords do not match',
 	},
+	download: 'Download',
+	notFound: '404 not found!',
+	pageDoesNotExist: 'The page you are trying to access does not exist!',
 };
