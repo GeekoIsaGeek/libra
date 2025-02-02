@@ -97,7 +97,7 @@ const handleSearch = () => {
 			</template>
 		</Select>
 
-		<TransitionWrapper duration="50" transitionClass="!translate-y-[-20px]">
+		<TransitionWrapper :duration="50" transitionClass="!translate-y-[-20px]">
 			<Filters v-if="showFilters" @handleMouseLeave="() => (showFilters = false)" />
 		</TransitionWrapper>
 	</div>

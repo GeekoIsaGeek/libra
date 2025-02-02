@@ -32,11 +32,11 @@ onMounted(() => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center mt-8 sm:mt-16 w-full h-full justify-start">
+	<div class="flex flex-col items-center mt-16 w-full h-full justify-start">
 		<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
-			<a :href="book?.link" target="_blank">
+			<a :href="book?.link" target="_blank" class="cursor-pointer">
 				<img
 					class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
 					:src="book?.image"

@@ -1,4 +1,9 @@
-<script></script>
+<script setup>
+import { defineEmits } from 'vue';
+import CloseIcon from '@/components/icons/CloseIcon.vue';
+
+defineEmits(['close']);
+</script>
 
 <template>
 	<div class="sidebar">
@@ -6,6 +11,7 @@
 			<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
 		</h1>
 		<div class="separator"></div>
+		<CloseIcon class="absolute sm:hidden fill-gold w-8 h-8 right-1 top-5" @click="() => $emit('close')" />
 	</div>
 </template>
 
@@ -13,7 +19,8 @@
 .sidebar {
 	min-width: max-content;
 	min-height: 100vh;
-	background-color: rgba(20, 20, 20, 0.95);
+	background-color: rgba(20, 20, 20, 0.98);
+	backdrop-filter: blur(5px);
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
 	display: flex;
 	flex-direction: column;
@@ -39,9 +46,13 @@
 	padding-bottom: 10px;
 	padding: 0 40px;
 }
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 640px) {
 	.sidebar {
-		display: none;
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 10;
 	}
 }
 </style>
