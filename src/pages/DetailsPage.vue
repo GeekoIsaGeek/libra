@@ -6,6 +6,7 @@ import GenreTag from '@/components/common/GenreTag.vue';
 import { capitalize, onMounted, ref, computed } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
 import BookIcon from '@/components/icons/BookIcon.vue';
+import axios from 'axios';
 
 const { params } = useRoute();
 const { locale } = useLocale();
@@ -34,16 +35,16 @@ onMounted(() => {
 
 const handleDownload = async () => {
 	if (`${book.value?.file}`) {
-		fetch(book.value.file)
-			.then((response) => response.blob())
-			.then((blob) => {
-				const url = window.URL.createObjectURL(new Blob([blob]));
-				const link = document.createElement('a');
-				link.href = url;
-				link.download = book.value.file.split('/').pop();
-				link.click();
-				window.URL.revokeObjectURL(url);
-			});
+		const response = await axios.get(bookUrl.value);
+		const blob = new Blob([response.data]);
+		const url = window.URL.createObjectURL(new Blob([blob]));
+
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = book.value.file.split('/').pop();
+		link.click();
+		window.URL.revokeObjectURL(url);
+		link.remove();
 	}
 };
 </script>

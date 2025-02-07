@@ -5,6 +5,7 @@ import AuthForm from '@/components/forms/AuthForm.vue';
 import { reactive } from 'vue';
 import { clearState } from '@/helpers';
 import useValidator from '@/composables/useValidator';
+import axios from 'axios';
 
 const registrationForm = reactive({
 	email: '',
@@ -23,7 +24,7 @@ const handleRegistration = async (event) => {
 		validateRegistration(registrationForm);
 
 		if (isFormValid.value) {
-			console.log({
+			await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
 				email: registrationForm.email,
 				username: registrationForm.username,
 				password: registrationForm.password,

@@ -1,14 +1,3 @@
-<template>
-	<div class="hero-container">
-		<transition name="fade" mode="out-in">
-			<div :key="currentQuote.text" class="quote-box">
-				<p class="quote">"{{ currentQuote.text }}"</p>
-				<p class="author">- {{ currentQuote.author }}</p>
-			</div>
-		</transition>
-	</div>
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue';
 
@@ -37,6 +26,17 @@ onMounted(() => {
 	setInterval(changeQuote, 3000);
 });
 </script>
+
+<template>
+	<div class="hero-container">
+		<transition name="fade" mode="out-in">
+			<div :key="currentQuote.text" class="quote-box">
+				<p class="quote">"{{ currentQuote.text }}"</p>
+				<p class="author">- {{ currentQuote.author }}</p>
+			</div>
+		</transition>
+	</div>
+</template>
 
 <style scoped>
 .hero-container {

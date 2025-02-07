@@ -5,11 +5,14 @@ const initialObject = {
 	title: { en: '', ka: '' },
 	author: { en: '', ka: '' },
 	description: { en: '', ka: '' },
+	language: { en: '', ka: '' },
 	year: '',
 	pages: '',
-	tags: ['romance'],
+	tags: [],
 	language: '',
 	image: '',
+	slug: '',
+	author: '',
 };
 </script>
 

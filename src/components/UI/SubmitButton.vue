@@ -1,7 +1,8 @@
-<script setup lang="ts">
-defineProps<{
-	content: string;
-}>();
+<script setup>
+import { defineProps } from 'vue';
+defineProps({
+	content: String,
+});
 </script>
 
 <template>
