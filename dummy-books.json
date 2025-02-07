@@ -23,7 +23,7 @@
 			"tags": ["fiction", "novel", "classic", "romance"],
 			"image": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1398034300i/5107.jpg",
 			"slug": "the-cather-in-the-rye-by-salinger",
-			"link": "https://giove.isti.cnr.it/demo/eread/Libri/sad/Rye.pdf"
+			"file": "Rye.pdf"
 		},
 		{
 			"id": 2,

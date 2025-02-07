@@ -3,7 +3,7 @@ import { useRoute, useRouter } from 'vue-router';
 import useLocale from '@/composables/useLocale';
 import Books from '/dummy-books.json';
 import GenreTag from '@/components/common/GenreTag.vue';
-import { capitalize, onMounted, ref } from 'vue';
+import { capitalize, onMounted, ref, computed } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
 import BookIcon from '@/components/icons/BookIcon.vue';
 
@@ -12,6 +12,8 @@ const { locale } = useLocale();
 const { push: navigate } = useRouter();
 
 const book = ref(null);
+
+const bookUrl = computed(() => `${import.meta.env.VITE_API_URL}/uploads/${book?.value?.file}`);
 
 onMounted(() => {
 	const bookDetails = Books.books.find((book) => book?.slug === params?.slug);
@@ -29,6 +31,21 @@ onMounted(() => {
 		navigate({ name: 'not-found' });
 	}
 });
+
+const handleDownload = async () => {
+	if (`${book.value?.file}`) {
+		fetch(book.value.file)
+			.then((response) => response.blob())
+			.then((blob) => {
+				const url = window.URL.createObjectURL(new Blob([blob]));
+				const link = document.createElement('a');
+				link.href = url;
+				link.download = book.value.file.split('/').pop();
+				link.click();
+				window.URL.revokeObjectURL(url);
+			});
+	}
+};
 </script>
 
 <template>
@@ -36,7 +53,7 @@ onMounted(() => {
 		<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
-			<a :href="book?.link" target="_blank" class="cursor-pointer">
+			<a :href="bookUrl" target="_blank" class="cursor-pointer">
 				<img
 					class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
 					:src="book?.image"
@@ -78,15 +95,13 @@ onMounted(() => {
 					/>
 				</ul>
 
-				<a
-					href="/README.md"
-					download=""
-					target="_blank"
+				<button
+					@click="handleDownload"
 					class="flex self-center lg:mr-10 xl:self-start gap-2 w-max justify-center py-2 text-black font-bold px-5 bg-lightBrown hover:bg-mediumBrown transition-colors rounded-lg mt-8"
 				>
 					<BookIcon class="icon fill-black" />
 					{{ $t('download') }}
-				</a>
+				</button>
 			</div>
 		</div>
 	</div>
