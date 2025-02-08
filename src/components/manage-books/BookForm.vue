@@ -31,7 +31,7 @@ const handleTagRemove = (tag) => {
 		<h1 class="text-3xl font-medium text-center">{{ $t(`bookForm.${mode}.title`) }}</h1>
 
 		<div
-			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-10"
+			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 sm:mt-12 lg:mt-4"
 		>
 			<div class="flex flex-wrap justify-center items-center gap-4 mt-5 mb-10">
 				{{ $t('bookForm.inputLang') }}:
@@ -68,6 +68,13 @@ const handleTagRemove = (tag) => {
 					:inputHandler="(val) => (bookDetails.pages = val)"
 				/>
 				<FormInput
+					name="language"
+					:placeholder="$t('bookForm.fields.language.placeholder')"
+					:label="$t('bookForm.fields.language.label')"
+					:value="bookDetails.language[inputLocale]"
+					:inputHandler="(val) => (bookDetails.language[inputLocale] = val)"
+				/>
+				<FormInput
 					name="description"
 					:placeholder="$t('bookForm.fields.description.placeholder')"
 					:label="$t('bookForm.fields.description.label')"
@@ -75,7 +82,6 @@ const handleTagRemove = (tag) => {
 					:value="bookDetails.description[inputLocale]"
 					:inputHandler="(val) => (bookDetails.description[inputLocale] = val)"
 				/>
-
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
 
 				<CustomInputWrapper :label="$t('bookForm.fields.cover.label')">

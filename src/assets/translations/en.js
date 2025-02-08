@@ -50,6 +50,10 @@ export default {
 			cover: {
 				label: 'Cover',
 			},
+			language: {
+				label: 'Language',
+				placeholder: 'Enter book language',
+			},
 		},
 	},
 	auth: {

@@ -19,12 +19,14 @@ const handleLogout = () => {
 
 <template>
 	<div class="sidebar">
-		<div>
+		<div class="py-7 lg:py-0">
 			<h1>
 				<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
 			</h1>
-			<div class="separator"></div>
-			<CloseIcon class="absolute sm:hidden fill-gold w-8 h-8 right-1 top-5" @click="() => $emit('close')" />
+			<CloseIcon
+				class="absolute lg:hidden fill-gold w-8 h-8 right-1 top-5 cursor-pointer"
+				@click="() => $emit('close')"
+			/>
 		</div>
 
 		<nav></nav>
@@ -43,23 +45,20 @@ const handleLogout = () => {
 
 <style scoped>
 .sidebar {
+	position: fixed;
 	min-width: max-content;
+	width: 200px;
 	min-height: 100vh;
-	background-color: rgba(20, 20, 20, 0.98);
-	backdrop-filter: blur(5px);
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+	background-color: rgba(20, 20, 20, 0.93);
+	backdrop-filter: blur(7px);
+	box-shadow: 2px 0 5px rgb(0 0 0 / 18%);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
 	justify-content: space-between;
 	padding-bottom: 36px;
-}
-.separator {
-	width: 100%;
-	height: 1px;
-	background-color: #c6a965;
-	margin: 20px 0;
+	z-index: 10;
 }
 
 .sidebar h1 {
@@ -71,8 +70,8 @@ const handleLogout = () => {
 	text-transform: uppercase;
 	margin-top: 36px;
 	letter-spacing: 2px;
-	padding-bottom: 10px;
-	padding: 0 40px;
+	padding-bottom: 16px;
+	border-bottom: #c6a965 1px solid;
 }
 @media screen and (max-width: 640px) {
 	.sidebar {

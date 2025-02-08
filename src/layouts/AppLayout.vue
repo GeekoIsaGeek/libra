@@ -4,12 +4,12 @@ import MenuIcon from '@/components/icons/MenuIcon.vue';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
-const displaySidebar = ref(window.innerWidth > 640);
+const displaySidebar = ref(window.innerWidth > 1024);
 
 const route = useRoute();
 
 const handleResize = () => {
-	if (window.innerWidth > 640) {
+	if (window.innerWidth > 1024) {
 		displaySidebar.value = true;
 	}
 };
@@ -26,7 +26,7 @@ onBeforeUnmount(() => {
 <template>
 	<div class="flex min-h-screen w-full bg-almostBlack text-white relative">
 		<MenuIcon
-			class="w-8 h-8 md:w-10 md:h-10 absolute right-3 top-3 cursor-pointer sm:hidden"
+			class="w-8 h-8 md:w-10 md:h-10 absolute right-3 top-3 cursor-pointer lg:hidden"
 			:class="{ '!top-[84px]': route.name === 'home' }"
 			@click="displaySidebar = !displaySidebar"
 		/>
@@ -39,9 +39,7 @@ onBeforeUnmount(() => {
 			<SideBar v-show="displaySidebar" @close="() => (displaySidebar = false)" />
 		</Transition>
 
-		<div
-			class="flex flex-col items-start w-full sm:w-[calc(100%-6rem)] lg:w-[calc(100%-10rem)] mx-auto sm:mx-10 lg:mx-20"
-		>
+		<div class="flex flex-col items-start w-full lg:w-[calc(100%-10rem)] mx-auto lg:mx-10 lg:ml-[248px]">
 			<slot />
 		</div>
 	</div>

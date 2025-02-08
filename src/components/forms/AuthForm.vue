@@ -11,7 +11,7 @@ defineProps({
 		<!-- <img :src="logo" class="w-[50px] mb-10" /> -->
 		<form
 			@submit="submitHandler"
-			class="lg:w-[60%] xl:w-[40%] 2xl:w-[30%] w-[90%] flex flex-col items-center justify-center gap-3"
+			class="lg:w-[60%] xl:w-[40%] 2xl:w-[30%] w-[90%] sm:w-[50%] flex flex-col items-center justify-center gap-3"
 		>
 			<slot />
 		</form>

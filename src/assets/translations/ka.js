@@ -3,7 +3,7 @@ export default {
 		nothingFound: 'ვერაფერი მოიძებნა',
 	},
 	search: {
-		inputPlaceholder: 'Tag-ებით ძებნისთვის წერა დაიწყეთ #-ით (მაგ. # ნოველა Sci-Fi)',
+		inputPlaceholder: 'Tag-ებით ძებნისთვის წერა დაიწყეთ #-ით (მაგ. # novel Sci-Fi)',
 	},
 	filters: {
 		title: 'ფილტრები',
