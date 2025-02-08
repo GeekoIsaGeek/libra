@@ -57,3 +57,11 @@ export const clearState = (object) => {
 		object[key] = '';
 	});
 };
+
+export const getJwtToken = () => {
+	return localStorage.getItem('jwt');
+};
+
+export const setJwtToken = (token) => {
+	localStorage.setItem('jwt', token);
+};

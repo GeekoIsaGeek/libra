@@ -63,6 +63,7 @@ export default {
 		emailPlaceholder: 'Enter email',
 		passwordPlaceholder: 'Enter password',
 		usernamePlaceholder: 'Enter username',
+		logOut: 'Log out',
 	},
 	errors: {
 		required: 'This field is required',

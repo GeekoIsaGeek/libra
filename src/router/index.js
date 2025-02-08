@@ -6,8 +6,10 @@ import AddBook from '@/components/manage-books/AddBook.vue';
 import EditBook from '@/components/manage-books/EditBook.vue';
 import Login from '@/pages/Login.vue';
 import Register from '@/pages/Register.vue';
+import { useUserStore } from '@/stores/UserStore';
+import { storeToRefs } from 'pinia';
 
-export default createRouter({
+const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
@@ -47,3 +49,17 @@ export default createRouter({
 		},
 	],
 });
+
+router.beforeEach((to, from, next) => {
+	const { isAuthenticated } = storeToRefs(useUserStore());
+
+	if ((to.name === 'login' || to.name === 'register') && isAuthenticated.value) {
+		next({ name: 'home' });
+	} else if ((to.name === 'add-book' || to.name === 'edit-book') && !isAuthenticated.value) {
+		next({ name: 'login' });
+	} else {
+		next();
+	}
+});
+
+export default router;

@@ -1,17 +1,43 @@
 <script setup>
-import { defineEmits } from 'vue';
 import CloseIcon from '@/components/icons/CloseIcon.vue';
+import LogoutIcon from '@/components/icons/LogoutIcon.vue';
+import { useUserStore } from '@/stores/UserStore';
+import { storeToRefs } from 'pinia';
+import { useRouter } from 'vue-router';
 
 defineEmits(['close']);
+
+const { clearUser } = useUserStore();
+const { isAuthenticated } = storeToRefs(useUserStore());
+const { push: navigate } = useRouter();
+
+const handleLogout = () => {
+	clearUser();
+	navigate({ name: 'login' });
+};
 </script>
 
 <template>
 	<div class="sidebar">
-		<h1>
-			<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
-		</h1>
-		<div class="separator"></div>
-		<CloseIcon class="absolute sm:hidden fill-gold w-8 h-8 right-1 top-5" @click="() => $emit('close')" />
+		<div>
+			<h1>
+				<RouterLink :to="{ name: 'home' }">Libra</RouterLink>
+			</h1>
+			<div class="separator"></div>
+			<CloseIcon class="absolute sm:hidden fill-gold w-8 h-8 right-1 top-5" @click="() => $emit('close')" />
+		</div>
+
+		<nav></nav>
+
+		<button
+			type="submit"
+			@click.prevent="handleLogout"
+			class="mt-5 py-1 px-7 bg-wheat rounded-3xl self-center text-darkestBrown font-semibold hover:saturate-200 transition-all duration-200 ease-out flex items-center gap-2"
+			v-if="isAuthenticated"
+		>
+			{{ $t('auth.logOut') }}
+			<LogoutIcon class="icon" />
+		</button>
 	</div>
 </template>
 
@@ -26,6 +52,8 @@ defineEmits(['close']);
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
+	justify-content: space-between;
+	padding-bottom: 36px;
 }
 .separator {
 	width: 100%;

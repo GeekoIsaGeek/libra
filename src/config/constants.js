@@ -1,4 +1,5 @@
 export const numOfRecViewedBooksToShow = 5;
+export const TOKEN_HAS_EXPIRED = 'Token has expired';
 
 // These should be used as the values of filter select elements
 export const languages = ['english', 'georgian'];

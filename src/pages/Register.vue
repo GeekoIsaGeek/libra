@@ -6,6 +6,7 @@ import { reactive } from 'vue';
 import { clearState } from '@/helpers';
 import useValidator from '@/composables/useValidator';
 import axios from 'axios';
+import { useUserStore } from '@/stores/UserStore';
 
 const registrationForm = reactive({
 	email: '',
@@ -13,6 +14,8 @@ const registrationForm = reactive({
 	password: '',
 	passwordConfirmation: '',
 });
+
+const { setUser } = useUserStore();
 
 const { validateRegistration, isFormTouched, isFormValid, errors } = useValidator();
 
@@ -24,11 +27,12 @@ const handleRegistration = async (event) => {
 		validateRegistration(registrationForm);
 
 		if (isFormValid.value) {
-			await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
+			const response = await axios.post(`${import.meta.env.VITE_API_URL}/register`, {
 				email: registrationForm.email,
 				username: registrationForm.username,
 				password: registrationForm.password,
 			});
+			setUser(response.data?.user, response.data?.access_token);
 		}
 	} catch (error) {
 		console.error(error);
