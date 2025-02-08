@@ -1,19 +1,10 @@
 <script setup>
 import { ref, onMounted } from 'vue';
+import bilingualQuotes from '@/assets/quotes.json';
+import useLocale from '@/composables/useLocale.js';
 
-const quotes = ref([
-	{
-		text: 'It is our choices, Harry, that show what we truly are, far more than our abilities.',
-		author: 'J.K. Rowling',
-	},
-	{ text: 'The only way out of the labyrinth of suffering is to forgive.', author: 'John Green' },
-	{ text: 'It does not do to dwell on dreams and forget to live.', author: 'J.K. Rowling' },
-	{ text: 'All we have to decide is what to do with the time that is given us.', author: 'J.R.R. Tolkien' },
-	{
-		text: 'Happiness can be found even in the darkest of times, if one only remembers to turn on the light.',
-		author: 'J.K. Rowling',
-	},
-]);
+const quotes = ref(bilingualQuotes);
+const { locale } = useLocale();
 
 const currentQuote = ref(quotes.value[0]);
 
@@ -31,8 +22,8 @@ onMounted(() => {
 	<div class="hero-container">
 		<transition name="fade" mode="out-in">
 			<div :key="currentQuote.text" class="quote-box">
-				<p class="quote">"{{ currentQuote.text }}"</p>
-				<p class="author">- {{ currentQuote.author }}</p>
+				<p class="quote">"{{ currentQuote.text[locale] }}"</p>
+				<p class="author">- {{ currentQuote.author[locale] }}</p>
 			</div>
 		</transition>
 	</div>

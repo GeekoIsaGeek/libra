@@ -5,6 +5,7 @@ import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/manage-books/TagsInput.vue';
 import ImageInput from '@/components/UI/ImageInput.vue';
 import CustomInputWrapper from '@/components/common/CustomInputWrapper.vue';
+import FileInput from '@/components/UI/FileInput.vue';
 
 const props = defineProps({
 	bookData: Object,
@@ -31,7 +32,7 @@ const handleTagRemove = (tag) => {
 		<h1 class="text-3xl font-medium text-center">{{ $t(`bookForm.${mode}.title`) }}</h1>
 
 		<div
-			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 sm:mt-12 lg:mt-4"
+			class="w-full xl:w-[75%] flex flex-col px-4 pt-5 pb-10 items-center bg-darkestBrown/50 rounded-md shadow-md min-h-[500px] border border-gold/70 mt-6 sm:mt-12 lg:mt-4"
 		>
 			<div class="flex flex-wrap justify-center items-center gap-4 mt-5 mb-10">
 				{{ $t('bookForm.inputLang') }}:
@@ -84,9 +85,15 @@ const handleTagRemove = (tag) => {
 				/>
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
 
-				<CustomInputWrapper :label="$t('bookForm.fields.cover.label')">
-					<ImageInput @setPhoto="(image) => (bookDetails.image = image)" :initialPhoto="bookDetails.image" />
-				</CustomInputWrapper>
+				<div class="flex justify-betwen w-full gap-6">
+					<CustomInputWrapper :label="$t('bookForm.fields.cover.label')" class="w-1/2">
+						<ImageInput @setPhoto="(image) => (bookDetails.image = image)" :initialPhoto="bookDetails.image" />
+					</CustomInputWrapper>
+
+					<CustomInputWrapper :label="$t('bookForm.fields.file.label')" class="w-1/2">
+						<FileInput @setFile="(file) => (bookDetails.file = file)" :initialFile="bookDetails?.file" />
+					</CustomInputWrapper>
+				</div>
 
 				<button
 					type="submit"

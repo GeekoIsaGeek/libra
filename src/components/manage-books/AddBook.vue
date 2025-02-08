@@ -9,10 +9,9 @@ const initialObject = {
 	year: '',
 	pages: '',
 	tags: [],
-	language: '',
 	image: '',
 	slug: '',
-	author: '',
+	file: '',
 };
 </script>
 

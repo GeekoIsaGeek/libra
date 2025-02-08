@@ -54,6 +54,9 @@ export default {
 				label: 'Language',
 				placeholder: 'Enter book language',
 			},
+			file: {
+				label: 'Book File',
+			},
 		},
 	},
 	auth: {
