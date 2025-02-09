@@ -11,7 +11,7 @@ const initialObject = {
 	tags: [],
 	image: '',
 	slug: '',
-	file: '',
+	file: null,
 };
 </script>
 

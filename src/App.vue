@@ -13,7 +13,6 @@ const { push: navigate } = useRouter();
 
 onMounted(async () => {
 	const token = getJwtToken();
-
 	if (token) {
 		try {
 			const response = await axios.get(`${import.meta.env.VITE_API_URL}/user`, {
@@ -21,7 +20,7 @@ onMounted(async () => {
 					Authorization: `Bearer ${token}`,
 				},
 			});
-			setUser(response.data?.user, token);
+			setUser(response.data);
 		} catch (error) {
 			if (error?.response?.status === 401 && error?.response?.data?.msg === TOKEN_HAS_EXPIRED) {
 				localStorage.removeItem('jwt');

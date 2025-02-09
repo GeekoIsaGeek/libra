@@ -58,6 +58,7 @@ export default {
 				label: 'Book File',
 			},
 		},
+		delete: 'Delete',
 	},
 	auth: {
 		login: 'Login',

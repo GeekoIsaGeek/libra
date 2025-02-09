@@ -7,6 +7,7 @@ import { capitalize, onMounted, ref, computed } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
 import BookIcon from '@/components/icons/BookIcon.vue';
 import axios from 'axios';
+import EditIcon from '@/components/icons/EditIcon.vue';
 
 const { params } = useRoute();
 const { locale } = useLocale();
@@ -47,11 +48,18 @@ const handleDownload = async () => {
 		link.remove();
 	}
 };
+
+const redirectToEditPage = () => {
+	navigate({ name: 'edit-book', params: { slug: book.value.slug } });
+};
 </script>
 
 <template>
 	<div class="flex flex-col items-center mt-16 w-full h-full justify-start">
-		<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
+		<div class="flex items-center justify-center gap-5">
+			<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
+			<EditIcon class="w-8 h-8 cursor-pointer hover:fill-lightBrown transition-colors" @click="redirectToEditPage" />
+		</div>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
 			<a :href="bookUrl" target="_blank" class="cursor-pointer">

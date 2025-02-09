@@ -2,12 +2,10 @@
 import TheAddImageIcon from '@/components/icons/AddImageIcon.vue';
 import { ref } from 'vue';
 
-const emit = defineEmits({
-	setFile: Function,
-});
+const emit = defineEmits(['setFile']);
 
 const props = defineProps({
-	initialFile: String,
+	initialFile: Object | null,
 });
 
 const selectedFile = ref(props.initialFile);
@@ -16,11 +14,10 @@ const handleChange = (e) => {
 	const target = e.currentTarget;
 	const selected = target.files[0];
 
-	if (!selected) {
+	if (!selected || !['application/pdf', 'application/mobi', 'application/epub'].includes(selected.type)) {
 		selectedFile.value = null;
 	} else {
 		selectedFile.value = selected;
-		console.log(selected.name);
 		emit('setFile', selected);
 	}
 	target.value = '';

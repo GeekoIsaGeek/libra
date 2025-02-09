@@ -7,7 +7,9 @@ export const useUserStore = defineStore('user', () => {
 	const isAuthenticated = computed(() => !!user.value?.username);
 
 	const setUser = (newUser, accessToken) => {
-		setJwtToken(accessToken);
+		if (accessToken) {
+			setJwtToken(accessToken);
+		}
 		user.value = newUser;
 	};
 

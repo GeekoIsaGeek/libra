@@ -1,18 +1,28 @@
 <script setup>
-import { reactive, ref } from 'vue';
+import { reactive, ref, watch, watchEffect } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/manage-books/TagsInput.vue';
 import ImageInput from '@/components/UI/ImageInput.vue';
 import CustomInputWrapper from '@/components/common/CustomInputWrapper.vue';
 import FileInput from '@/components/UI/FileInput.vue';
+import useValidator from '@/composables/useValidator';
+import DeleteIcon from '@/components/icons/DeleteIcon.vue';
 
 const props = defineProps({
 	bookData: Object,
 	mode: 'add' | 'edit',
 });
 
+const { isFormTouched } = useValidator();
+
 const bookDetails = reactive(props.bookData);
+
+watch(bookDetails, () => {
+	if (!isFormTouched.value) {
+		isFormTouched.value = true;
+	}
+});
 
 const inputLocale = ref('ka');
 
@@ -24,6 +34,18 @@ const handleTagAdd = (tag) => {
 const handleTagRemove = (tag) => {
 	if (tag === '') return;
 	bookDetails.tags = bookDetails.tags.filter((t) => t.toLowerCase() !== tag.toLowerCase());
+};
+
+const handleSubmit = (event) => {
+	if (!isFormTouched.value) {
+		return;
+	}
+	event.preventDefault();
+	console.log(bookDetails);
+};
+
+const deleteBook = () => {
+	console.log('delete book');
 };
 </script>
 
@@ -97,10 +119,19 @@ const handleTagRemove = (tag) => {
 
 				<button
 					type="submit"
-					@click.prevent
+					@click.prevent="handleSubmit"
 					class="mt-5 py-2 px-20 bg-wheat rounded-full self-center text-darkestBrown font-semibold hover:saturate-200 transition-all duration-200 ease-out"
 				>
 					{{ $t(`bookForm.${mode}.submit`) }}
+				</button>
+
+				<button
+					@click.prevent="deleteBook"
+					class="py-2 px-16 bg-red-500 rounded-full self-center text-darkestBrown font-semibold hover:bg-red-600 transition-all duration-200 ease-out flex items-center justify-between gap-1"
+					v-if="mode === 'edit'"
+				>
+					{{ $t(`bookForm.delete`) }}
+					<DeleteIcon class="icon w-4 h-4" />
 				</button>
 			</form>
 		</div>
