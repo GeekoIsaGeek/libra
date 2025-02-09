@@ -1,6 +1,6 @@
-import { defineStore } from 'pinia';
+import { defineStore, storeToRefs } from 'pinia';
 import { ref, computed } from 'vue';
-import Books from '/dummy-books.json';
+import useBookStore from '@/stores/BookStore';
 
 export const useFilterStore = defineStore('filters', () => {
 	const genre = ref('');
@@ -8,10 +8,12 @@ export const useFilterStore = defineStore('filters', () => {
 	const pages = ref();
 	const isAnyFilterSet = computed(() => genre.value || language.value || pages.value);
 
-	const books = ref(Books.books);
+	const { books } = storeToRefs(useBookStore());
+
 	const filteredBooks = ref([]);
 
 	const filterBooks = () => {
+		console.log(books.value);
 		filteredBooks.value = books.value.filter((book) => {
 			const meetsGenreFilter = !genre.value || book?.tags?.includes(genre.value);
 			const meetsLangFilter = !language.value || book.language === language.value;

@@ -1,11 +1,11 @@
 <script setup>
 import TheAddImageIcon from '@/components/icons/AddImageIcon.vue';
-import { ref } from 'vue';
+import { ref, watchEffect } from 'vue';
 
 const emit = defineEmits(['setFile']);
 
 const props = defineProps({
-	initialFile: Object | null,
+	initialFile: Object | String | null,
 });
 
 const selectedFile = ref(props.initialFile);
@@ -27,7 +27,9 @@ const handleChange = (e) => {
 <template>
 	<div class="w-full h-[120px] overflow-hidden relative flex items-center justify-center flex-col gap-4">
 		<TheAddImageIcon class="fill-wheat w-7 h-7" />
-		<p v-if="selectedFile" class="text-center">{{ selectedFile?.name }}</p>
+		<p v-if="selectedFile" class="text-center">
+			{{ selectedFile?.name || selectedFile?.split('/books/')?.['1'] || '' }}
+		</p>
 
 		<input
 			type="file"

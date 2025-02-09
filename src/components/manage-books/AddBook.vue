@@ -8,7 +8,7 @@ const initialObject = {
 	language: { en: '', ka: '' },
 	year: '',
 	pages: '',
-	tags: [],
+	tags: null,
 	image: '',
 	slug: '',
 	file: null,
