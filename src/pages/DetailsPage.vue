@@ -1,25 +1,30 @@
 <script setup>
 import { useRoute, useRouter } from 'vue-router';
 import useLocale from '@/composables/useLocale';
-import Books from '/dummy-books.json';
 import GenreTag from '@/components/common/GenreTag.vue';
 import { capitalize, onMounted, ref, computed } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
 import BookIcon from '@/components/icons/BookIcon.vue';
 import axios from 'axios';
 import EditIcon from '@/components/icons/EditIcon.vue';
+import useBookStore from '@/stores/BookStore';
+import { storeToRefs } from 'pinia';
+import { useUserStore } from '@/stores/UserStore';
+import { UPLOADS_DIR } from '@/config/constants';
 
 const { params } = useRoute();
 const { locale } = useLocale();
 const { push: navigate } = useRouter();
+const { books } = storeToRefs(useBookStore());
+const { user } = useUserStore();
 
 const book = ref(null);
 
-const bookUrl = computed(() => `${import.meta.env.VITE_API_URL}/uploads/${book?.value?.file}`);
+const bookUrl = computed(() => `${UPLOADS_DIR}${book?.value?.file}`);
+const imageUrl = computed(() => `${UPLOADS_DIR}${book?.value?.image}`);
 
 onMounted(() => {
-	const bookDetails = Books.books.find((book) => book?.slug === params?.slug);
-
+	const bookDetails = books.value.find((book) => book?.slug === params?.slug);
 	if (bookDetails?.id) {
 		book.value = bookDetails;
 
@@ -58,14 +63,18 @@ const redirectToEditPage = () => {
 	<div class="flex flex-col items-center mt-16 w-full h-full justify-start">
 		<div class="flex items-center justify-center gap-5">
 			<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
-			<EditIcon class="w-8 h-8 cursor-pointer hover:fill-lightBrown transition-colors" @click="redirectToEditPage" />
+			<EditIcon
+				v-if="user?.id && book?.created_by === user?.id"
+				class="w-8 h-8 cursor-pointer hover:fill-lightBrown transition-colors"
+				@click="redirectToEditPage"
+			/>
 		</div>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
 			<a :href="bookUrl" target="_blank" class="cursor-pointer">
 				<img
 					class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
-					:src="book?.image"
+					:src="imageUrl"
 					:alt="book?.title?.[locale]"
 				/>
 			</a>
@@ -97,7 +106,7 @@ const redirectToEditPage = () => {
 					class="lg:mt-5 px-10 md:px-0 flex flex-wrap justify-center md:gap-2 items-center sm:justify-start shadow"
 				>
 					<GenreTag
-						v-for="tag in book?.tags"
+						v-for="tag in book?.tags ? book?.tags?.split(',') : []"
 						:key="tag"
 						class="bg-gold text-black px-2 py-1 rounded-md"
 						:tag="capitalize(tag)"

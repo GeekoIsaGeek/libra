@@ -1,10 +1,13 @@
 <script setup>
 import BookForm from '@/components/manage-books/BookForm.vue';
-import Books from '/dummy-books.json';
 import { useRoute } from 'vue-router';
+import useBookStore from '@/stores/BookStore';
+import { storeToRefs } from 'pinia';
 
 const { slug } = useRoute().params;
-const bookDetails = Books.books.find((book) => book.slug === slug);
+const { books } = storeToRefs(useBookStore());
+
+const bookDetails = books.value.find((book) => book.slug === slug);
 </script>
 
 <template>

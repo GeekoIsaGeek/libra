@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, watch, watchEffect } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/manage-books/TagsInput.vue';
@@ -8,6 +8,10 @@ import CustomInputWrapper from '@/components/common/CustomInputWrapper.vue';
 import FileInput from '@/components/UI/FileInput.vue';
 import useValidator from '@/composables/useValidator';
 import DeleteIcon from '@/components/icons/DeleteIcon.vue';
+import { useUserStore } from '@/stores/UserStore';
+import { storeToRefs } from 'pinia';
+import useBookStore from '@/stores/BookStore';
+import { UPLOADS_DIR } from '@/config/constants';
 
 const props = defineProps({
 	bookData: Object,
@@ -15,16 +19,19 @@ const props = defineProps({
 });
 
 const { isFormTouched } = useValidator();
+const { user } = storeToRefs(useUserStore());
+const { addBook, deleteBook, updateBook } = useBookStore();
 
-const bookDetails = reactive(props.bookData);
+const bookDetails = reactive({ ...props.bookData, tags: props?.bookData?.['tags']?.split(',') || [] });
 
 watch(bookDetails, () => {
 	if (!isFormTouched.value) {
 		isFormTouched.value = true;
 	}
+	console.log(bookDetails);
 });
 
-const inputLocale = ref('ka');
+const inputLocale = ref('en');
 
 const handleTagAdd = (tag) => {
 	if (tag === '' || bookDetails.tags.includes(tag.toLowerCase())) return;
@@ -34,18 +41,6 @@ const handleTagAdd = (tag) => {
 const handleTagRemove = (tag) => {
 	if (tag === '') return;
 	bookDetails.tags = bookDetails.tags.filter((t) => t.toLowerCase() !== tag.toLowerCase());
-};
-
-const handleSubmit = (event) => {
-	if (!isFormTouched.value) {
-		return;
-	}
-	event.preventDefault();
-	console.log(bookDetails);
-};
-
-const deleteBook = () => {
-	console.log('delete book');
 };
 </script>
 
@@ -80,14 +75,14 @@ const deleteBook = () => {
 					name="year"
 					:placeholder="$t('bookForm.fields.year.placeholder')"
 					:label="$t('bookForm.fields.year.label')"
-					:value="bookDetails.year"
+					:value="bookDetails.year?.toString()"
 					:inputHandler="(val) => (bookDetails.year = val)"
 				/>
 				<FormInput
 					name="pages"
 					:placeholder="$t('bookForm.fields.pages.placeholder')"
 					:label="$t('bookForm.fields.pages.label')"
-					:value="bookDetails.pages"
+					:value="bookDetails.pages?.toString()"
 					:inputHandler="(val) => (bookDetails.pages = val)"
 				/>
 				<FormInput
@@ -109,7 +104,10 @@ const deleteBook = () => {
 
 				<div class="flex justify-betwen w-full gap-6">
 					<CustomInputWrapper :label="$t('bookForm.fields.cover.label')" class="w-1/2">
-						<ImageInput @setPhoto="(image) => (bookDetails.image = image)" :initialPhoto="bookDetails.image" />
+						<ImageInput
+							@setPhoto="(image) => (bookDetails.image = image)"
+							:initialPhoto="bookDetails?.image ? `${UPLOADS_DIR}${bookDetails.image}` : ''"
+						/>
 					</CustomInputWrapper>
 
 					<CustomInputWrapper :label="$t('bookForm.fields.file.label')" class="w-1/2">
@@ -119,16 +117,18 @@ const deleteBook = () => {
 
 				<button
 					type="submit"
-					@click.prevent="handleSubmit"
+					@click.prevent="
+						() => (mode === 'add' ? addBook(bookDetails, isFormTouched) : updateBook(bookDetails, isFormTouched))
+					"
 					class="mt-5 py-2 px-20 bg-wheat rounded-full self-center text-darkestBrown font-semibold hover:saturate-200 transition-all duration-200 ease-out"
 				>
 					{{ $t(`bookForm.${mode}.submit`) }}
 				</button>
 
 				<button
-					@click.prevent="deleteBook"
+					@click.prevent="() => deleteBook(bookDetails, isFormTouched)"
 					class="py-2 px-16 bg-red-500 rounded-full self-center text-darkestBrown font-semibold hover:bg-red-600 transition-all duration-200 ease-out flex items-center justify-between gap-1"
-					v-if="mode === 'edit'"
+					v-if="mode === 'edit' && user?.id && bookDetails?.created_by === user?.id"
 				>
 					{{ $t(`bookForm.delete`) }}
 					<DeleteIcon class="icon w-4 h-4" />

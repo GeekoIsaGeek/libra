@@ -2,9 +2,7 @@
 import TheAddImageIcon from '@/components/icons/AddImageIcon.vue';
 import { computed, ref } from 'vue';
 
-const emit = defineEmits({
-	setPhoto: Function,
-});
+const emit = defineEmits(['setPhoto']);
 
 const props = defineProps({
 	initialPhoto: String,

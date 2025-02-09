@@ -1,13 +1,14 @@
 <script setup>
 import SearchIcon from '@/components/icons/SearchIcon.vue';
 import FiltersIcon from '@/components/icons/FiltersIcon.vue';
-import Books from '/dummy-books.json';
 import { ref } from 'vue';
 import Select from '@/components/UI/Select.vue';
 import useLocale from '@/composables/useLocale.js';
 import { RouterLink } from 'vue-router';
 import Filters from '@/components/filters/Filters.vue';
 import TransitionWrapper from '@/layouts/TransitionWrapper.vue';
+import useBookStore from '@/stores/BookStore';
+import { storeToRefs } from 'pinia';
 
 const { locale } = useLocale();
 
@@ -15,11 +16,12 @@ const searchString = ref('');
 const showResults = ref(false);
 const results = ref([]);
 const showFilters = ref(false);
+const { books } = storeToRefs(useBookStore());
 
 const searchByTags = (tags) => {
 	showResults.value = true;
 
-	results.value = Books.books.filter((book) => {
+	results.value = books.value.filter((book) => {
 		return tags.every((tag) => book?.tags?.includes(tag));
 	});
 };
@@ -44,7 +46,7 @@ const handleSearch = () => {
 
 		showResults.value = true;
 
-		results.value = Books.books.filter(
+		results.value = books.value.filter(
 			(book) =>
 				book?.title[currLocale]?.toLowerCase().includes(searchStr) ||
 				book?.author[currLocale]?.toLowerCase().includes(searchStr) ||

@@ -1,6 +1,7 @@
 import georgianTranslations from '@/assets/translations/ka';
 import { capitalize } from 'vue';
 import { numOfRecViewedBooksToShow } from '@/config/constants';
+import { translatables } from '@/config/constants';
 
 export const transformSelectOption = ({ option, locale, type, index }) => {
 	const translations = {
@@ -64,4 +65,18 @@ export const getJwtToken = () => {
 
 export const setJwtToken = (token) => {
 	localStorage.setItem('jwt', token);
+};
+
+export const objectToFormData = (object, bilingualFields = translatables) => {
+	const formData = new FormData();
+
+	for (const [key, value] of Object.entries(object)) {
+		if (bilingualFields.includes(key)) {
+			formData.append(key, JSON.stringify(value));
+			continue;
+		}
+		formData.append(key, value);
+	}
+
+	return formData;
 };

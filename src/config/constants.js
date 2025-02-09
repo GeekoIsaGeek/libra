@@ -30,3 +30,7 @@ export const pages = [
 	{ displayAs: '500-1000', min: 500, max: 1000 },
 	{ displayAs: '1000+', min: 1000, max: null },
 ];
+
+export const translatables = ['title', 'author', 'description', 'language'];
+
+export const UPLOADS_DIR = `${import.meta.env.VITE_API_URL}/uploads`;

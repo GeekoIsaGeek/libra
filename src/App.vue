@@ -7,11 +7,15 @@ import { useUserStore } from '@/stores/UserStore';
 import { getJwtToken } from '@/helpers';
 import { TOKEN_HAS_EXPIRED } from '@/config/constants';
 import { useRouter } from 'vue-router';
+import useBookStore from '@/stores/BookStore';
 
 const { setUser } = useUserStore();
 const { push: navigate } = useRouter();
+const { fetchBooks } = useBookStore();
 
 onMounted(async () => {
+	fetchBooks();
+
 	const token = getJwtToken();
 	if (token) {
 		try {
