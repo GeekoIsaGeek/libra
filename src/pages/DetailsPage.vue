@@ -10,7 +10,9 @@ import EditIcon from '@/components/icons/EditIcon.vue';
 import useBookStore from '@/stores/BookStore';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/UserStore';
-import { UPLOADS_DIR } from '@/config/constants';
+import { getTags } from '@/helpers';
+import { getFileUrl } from '../helpers';
+import InfoIcon from '@/components/icons/InfoIcon.vue';
 
 const { params } = useRoute();
 const { locale } = useLocale();
@@ -20,8 +22,8 @@ const { user } = useUserStore();
 
 const book = ref(null);
 
-const bookUrl = computed(() => `${UPLOADS_DIR}${book?.value?.file}`);
-const imageUrl = computed(() => `${UPLOADS_DIR}${book?.value?.image}`);
+const bookUrl = computed(() => getFileUrl(book?.value?.file || ''));
+const imageUrl = computed(() => getFileUrl(book?.value?.image || ''));
 
 onMounted(() => {
 	const bookDetails = books.value.find((book) => book?.slug === params?.slug);
@@ -71,13 +73,11 @@ const redirectToEditPage = () => {
 		</div>
 
 		<div class="mt-10 xl:mt-24 flex flex-col xl:flex-row justify-center items-center gap-5">
-			<a :href="bookUrl" target="_blank" class="cursor-pointer">
-				<img
-					class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
-					:src="imageUrl"
-					:alt="book?.title?.[locale]"
-				/>
-			</a>
+			<img
+				class="rounded-sm w-[160px] h-[240px] lg:w-[220px] lg:h-[300px] xl:w-[400px] xl:h-[620px]"
+				:src="imageUrl"
+				:alt="book?.title?.[locale]"
+			/>
 
 			<div
 				class="xl:mt-0 sm:w-[80%] xl:w-[40%] py-5 px-0 md:px-10 lg:pr-0 flex items-start justify-center flex-col gap-5"
@@ -106,7 +106,7 @@ const redirectToEditPage = () => {
 					class="lg:mt-5 px-10 md:px-0 flex flex-wrap justify-center md:gap-2 items-center sm:justify-start shadow"
 				>
 					<GenreTag
-						v-for="tag in book?.tags ? book?.tags?.split(',') : []"
+						v-for="tag in getTags(book?.tags)"
 						:key="tag"
 						class="bg-gold text-black px-2 py-1 rounded-md"
 						:tag="capitalize(tag)"
@@ -116,10 +116,16 @@ const redirectToEditPage = () => {
 				<button
 					@click="handleDownload"
 					class="flex self-center lg:mr-10 xl:self-start gap-2 w-max justify-center py-2 text-black font-bold px-5 bg-lightBrown hover:bg-mediumBrown transition-colors rounded-lg mt-8"
+					v-if="book?.file"
 				>
 					<BookIcon class="icon fill-black" />
 					{{ $t('download') }}
 				</button>
+
+				<div class="text-center flex items-center justify-center gap-2 mt-8" v-else>
+					<InfoIcon class="icon fill-white" />
+					{{ $t('fileNotAccessible') }}
+				</div>
 			</div>
 		</div>
 	</div>

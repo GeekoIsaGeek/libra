@@ -1,6 +1,7 @@
 <script setup>
 import useLocale from '@/composables/useLocale.js';
 import { RouterLink } from 'vue-router';
+import { getFileUrl } from '../../helpers';
 
 const props = defineProps({
 	book: {
@@ -20,7 +21,7 @@ const { locale } = useLocale();
 	<div :class="`book ${isSmall && 'mini'}`">
 		<RouterLink :to="`books/${book?.slug}`" class="book-title">
 			<div class="img-wrapper">
-				<img :src="book?.image" :alt="book?.title?.[locale]" :class="`${isSmall && 'mini'}`" />
+				<img :src="getFileUrl(book?.image)" :alt="book?.title?.[locale]" :class="`${isSmall && 'mini'}`" />
 			</div>
 			<div :class="`book-info ${isSmall && 'mini'}`">
 				<p :class="`title ${isSmall && 'mini'}`">{{ book?.title?.[locale] }}</p>

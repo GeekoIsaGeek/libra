@@ -83,6 +83,7 @@ export default {
 	download: 'ჩამოტვირთვა',
 	notFound: '404 - ვერ მოიძებნა!',
 	pageDoesNotExist: 'ასეთი გვერდი არ არსებობს!',
+	fileNotAccessible: 'ამ წიგნის ჩამოტვირთვა ამჟამად შეუძლებელია!',
 
 	// Order of languages and genres should be the same as in the constants file
 	languages: ['ინგლისური', 'ქართული'],

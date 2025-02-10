@@ -11,8 +11,9 @@ import DeleteIcon from '@/components/icons/DeleteIcon.vue';
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 import useBookStore from '@/stores/BookStore';
-import { UPLOADS_DIR } from '@/config/constants';
 import useLocale from '@/composables/useLocale.js';
+import { getTags } from '@/helpers';
+import { getFileUrl } from '@/helpers';
 
 const props = defineProps({
 	bookData: Object,
@@ -24,7 +25,7 @@ const { setLocale } = useLocale();
 const { user } = storeToRefs(useUserStore());
 const { addBook, deleteBook, updateBook } = useBookStore();
 
-const bookDetails = reactive({ ...props.bookData, tags: props?.bookData?.['tags']?.split(',') || [] });
+const bookDetails = reactive({ ...props.bookData, tags: getTags(props?.bookData?.['tags']) });
 
 watch(bookDetails, () => {
 	if (!isFormTouched.value) {
@@ -112,7 +113,7 @@ const handleTagRemove = (tag) => {
 					<CustomInputWrapper :label="$t('bookForm.fields.cover.label')" class="w-1/2">
 						<ImageInput
 							@setPhoto="(image) => (bookDetails.image = image)"
-							:initialPhoto="bookDetails?.image ? `${UPLOADS_DIR}${bookDetails.image}` : ''"
+							:initialPhoto="getFileUrl(bookDetails?.image)"
 						/>
 					</CustomInputWrapper>
 

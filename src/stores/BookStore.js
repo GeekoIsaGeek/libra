@@ -39,12 +39,18 @@ const useBookStore = defineStore('books', () => {
 	const updateBook = async (book, isFormTouched) => {
 		if (!isFormTouched) return;
 
-		const response = await axios.put(`${import.meta.env.VITE_API_URL}/books/${book?.id}`, book, {
+		const formData = objectToFormData(book);
+
+		const response = await axios.put(`${import.meta.env.VITE_API_URL}/books/${book?.id}`, formData, {
 			headers: {
 				Authorization: `Bearer ${getJwtToken()}`,
 			},
 		});
-		console.log(response);
+		if (response.status === 200) {
+			const index = books.value.findIndex((b) => b.id === book.id);
+			books.value[index] = response.data;
+			navigate({ name: 'details', params: { slug: response.data.slug } });
+		}
 	};
 
 	const deleteBook = async (bookId) => {

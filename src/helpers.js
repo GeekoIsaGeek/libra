@@ -80,3 +80,33 @@ export const objectToFormData = (object, bilingualFields = translatables) => {
 
 	return formData;
 };
+
+export const getTags = (tags) => {
+	switch (true) {
+		case Array.isArray(tags):
+			return tags;
+		case typeof tags === 'string':
+			return tags.split(',');
+		default:
+			return [];
+	}
+};
+
+export const getFileUrl = (asset) => {
+	switch (true) {
+		case !asset:
+			return '';
+		case asset instanceof File:
+		case asset.startsWith('http'):
+			return asset;
+		default:
+			return `${import.meta.env.VITE_API_URL}/uploads/${asset}`;
+	}
+};
+
+export const getFileName = (fileName) => {
+	if (!fileName) {
+		return '';
+	}
+	return fileName?.split('/')[1].split('_')?.[1];
+};

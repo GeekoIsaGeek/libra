@@ -83,4 +83,5 @@ export default {
 	download: 'Download',
 	notFound: '404 not found!',
 	pageDoesNotExist: 'The page you are trying to access does not exist!',
+	fileNotAccessible: "This book can't be downloaded at this point!",
 };
