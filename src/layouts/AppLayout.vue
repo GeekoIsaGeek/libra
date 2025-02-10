@@ -24,7 +24,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-	<div class="flex min-h-screen w-full bg-almostBlack text-white relative">
+	<div class="flex min-h-screen w-full text-white relative">
 		<MenuIcon
 			class="w-8 h-8 md:w-10 md:h-10 absolute right-3 top-3 cursor-pointer lg:hidden"
 			:class="{ '!top-[84px]': route.name === 'home' }"
@@ -39,7 +39,7 @@ onBeforeUnmount(() => {
 			<SideBar v-show="displaySidebar" @close="() => (displaySidebar = false)" />
 		</Transition>
 
-		<div class="flex flex-col items-start w-full lg:w-[calc(100%-10rem)] mx-auto lg:mx-10 lg:ml-[248px]">
+		<div class="flex flex-col items-start w-full mx-auto lg:pl-[250px]">
 			<slot />
 		</div>
 	</div>

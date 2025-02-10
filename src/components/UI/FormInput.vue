@@ -31,10 +31,10 @@ const props = defineProps({
 
 <template>
 	<div class="flex flex-col gap-2 w-full">
-		<div class="flex h-max shadow-md border border-gold rounded-md" :class="{ 'border-pinkishRed': error }">
+		<div class="flex h-max shadow-md border border-lightBrown rounded-md" :class="{ 'border-pinkishRed': error }">
 			<label
 				:for="name"
-				class="bg-almostBlack/20 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border-r border-r-gold rounded-l-md select-none min-w-max"
+				class="bg-almostBlack/40 w-[10rem] flex items-center justify-center px-3 text-normal text-center py-1.5 border-r border-r-gold rounded-l-md select-none min-w-max"
 				:class="{ '!border-pinkishRed': error }"
 			>
 				{{ label }}</label
@@ -46,7 +46,7 @@ const props = defineProps({
 				:placeholder="placeholder"
 				:value="value"
 				@input="(event) => inputHandler(event.target.value)"
-				class="h-[80px] resize-none text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/10 placeholder:text-wheat/80"
+				class="h-[80px] resize-none text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/20 placeholder:text-wheat/80"
 			>
 			</textarea>
 			<input
@@ -56,7 +56,7 @@ const props = defineProps({
 				:placeholder="placeholder || '...'"
 				:value="value"
 				@input="(event) => inputHandler(event.target.value)"
-				class="text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/10 placeholder:text-wheat/80"
+				class="text-wheat outline-none py-1.5 px-3 w-full bg-lightBrown/20 placeholder:text-wheat/80"
 			/>
 		</div>
 		<Error v-if="error">{{ error }}</Error>

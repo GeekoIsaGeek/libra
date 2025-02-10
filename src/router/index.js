@@ -8,7 +8,8 @@ import Login from '@/pages/Login.vue';
 import Register from '@/pages/Register.vue';
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
-import { getJwtToken } from '../helpers';
+import { getJwtToken } from '@/helpers';
+import About from '@/pages/About.vue';
 
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -37,6 +38,11 @@ const router = createRouter({
 			path: '/login',
 			component: Login,
 			name: 'login',
+		},
+		{
+			path: '/about',
+			component: About,
+			name: 'about',
 		},
 		{
 			path: '/register',

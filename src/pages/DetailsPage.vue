@@ -61,7 +61,7 @@ const redirectToEditPage = () => {
 
 <template>
 	<div v-if="!book" class="w-full h-full flex items-center justify-center">Loading...</div>
-	<div v-else class="flex flex-col items-center mt-16 w-full h-full justify-start">
+	<div v-else class="flex flex-col items-center pt-16 w-full h-full justify-start bg-[#0f0f0f98]">
 		<div class="flex items-center justify-center gap-5">
 			<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 			<EditIcon

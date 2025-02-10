@@ -84,4 +84,10 @@ export default {
 	notFound: '404 not found!',
 	pageDoesNotExist: 'The page you are trying to access does not exist!',
 	fileNotAccessible: "This book can't be downloaded at this point!",
+	routes: {
+		home: 'Home',
+		add: 'Add New Book',
+		login: 'Login',
+		about: 'About Us',
+	},
 };

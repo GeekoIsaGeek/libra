@@ -8,14 +8,18 @@
 	padding: 0;
 	box-sizing: border-box;
 }
-body {
-	background: #101010;
-}
 
 ul {
 	list-style: none;
 }
-
+body {
+	background-color: #1b1b1bd3;
+	background-image: url('@/assets/images/bg.jpeg');
+	background-blend-mode: overlay;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
 a {
 	text-decoration: none;
 	color: inherit;
@@ -45,5 +49,11 @@ a {
 @layer components {
 	.icon {
 		@apply w-5 h-5 fill-black;
+	}
+}
+
+@layer utilities {
+	.gold-filter {
+		filter: invert(100%) sepia(10%) saturate(1700%) hue-rotate(0deg);
 	}
 }

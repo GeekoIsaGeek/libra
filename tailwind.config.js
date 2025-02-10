@@ -11,6 +11,7 @@ export default {
 				darkestBrown: '#2e2e2e',
 				almostBlack: '#181818',
 				pinkishRed: '#fd1d5a',
+				superDarkBrown: '#242424',
 			},
 		},
 	},
