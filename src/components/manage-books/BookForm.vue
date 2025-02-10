@@ -30,6 +30,7 @@ watch(bookDetails, () => {
 	if (!isFormTouched.value) {
 		isFormTouched.value = true;
 	}
+	console.log(bookDetails);
 });
 
 const inputLocale = ref('en');
