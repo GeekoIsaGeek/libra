@@ -4,9 +4,7 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue';
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
-import HomeIcon from '../icons/HomeIcon.vue';
 import LibraryIcon from '../icons/LibraryIcon.vue';
-import BookIcon from '../icons/BookIcon.vue';
 
 defineEmits(['close']);
 
@@ -35,14 +33,14 @@ const links = [
 				</RouterLink>
 			</h1>
 			<CloseIcon
-				class="absolute lg:hidden fill-lightrown w-8 h-8 right-1 top-5 cursor-pointer"
+				class="absolute lg:hidden fill-lightrown fill-gold w-8 h-8 right-1 top-5 cursor-pointer"
 				@click="() => $emit('close')"
 			/>
 		</div>
 
 		<div class="flex flex-col h-full justify-between pt-10">
 			<nav class="flex flex-col items-start gap-6 ml-12 sm:ml-0 text-[28px] text-gold">
-				<RouterLink :to="{ name: link.name }" v-for="link in links" :key="link.name" class="relative group r">
+				<RouterLink :to="{ name: link.name }" v-for="link in links" :key="link.name" class="relative group">
 					{{ $t(link.label) }}
 					<span
 						class="absolute left-1/2 bottom-0 w-0 h-[2px] bg-gold transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"
