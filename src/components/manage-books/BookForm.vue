@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, ref, watch } from 'vue';
+import { reactive, ref, watch, watchEffect } from 'vue';
 import LanguageSwitcher from '@/components/common/LanguageSwitcher.vue';
 import FormInput from '@/components/UI/FormInput.vue';
 import TagsInput from '@/components/manage-books/TagsInput.vue';
@@ -12,6 +12,7 @@ import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 import useBookStore from '@/stores/BookStore';
 import { UPLOADS_DIR } from '@/config/constants';
+import useLocale from '@/composables/useLocale.js';
 
 const props = defineProps({
 	bookData: Object,
@@ -19,6 +20,7 @@ const props = defineProps({
 });
 
 const { isFormTouched } = useValidator();
+const { setLocale } = useLocale();
 const { user } = storeToRefs(useUserStore());
 const { addBook, deleteBook, updateBook } = useBookStore();
 
@@ -28,10 +30,13 @@ watch(bookDetails, () => {
 	if (!isFormTouched.value) {
 		isFormTouched.value = true;
 	}
-	console.log(bookDetails);
 });
 
 const inputLocale = ref('en');
+
+watchEffect(() => {
+	setLocale(inputLocale.value);
+});
 
 const handleTagAdd = (tag) => {
 	if (tag === '' || bookDetails.tags.includes(tag.toLowerCase())) return;
