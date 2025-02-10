@@ -2,7 +2,7 @@
 import { useRoute, useRouter } from 'vue-router';
 import useLocale from '@/composables/useLocale';
 import GenreTag from '@/components/common/GenreTag.vue';
-import { capitalize, onMounted, ref, computed } from 'vue';
+import { capitalize, ref, computed, watchEffect } from 'vue';
 import { addToRecentlyViewed } from '@/helpers.js';
 import BookIcon from '@/components/icons/BookIcon.vue';
 import axios from 'axios';
@@ -11,21 +11,21 @@ import useBookStore from '@/stores/BookStore';
 import { storeToRefs } from 'pinia';
 import { useUserStore } from '@/stores/UserStore';
 import { getTags } from '@/helpers';
-import { getFileUrl } from '../helpers';
+import { getFileUrl } from '@/helpers';
 import InfoIcon from '@/components/icons/InfoIcon.vue';
 
 const { params } = useRoute();
 const { locale } = useLocale();
 const { push: navigate } = useRouter();
 const { books } = storeToRefs(useBookStore());
-const { user } = useUserStore();
+const { user } = storeToRefs(useUserStore());
 
 const book = ref(null);
 
 const bookUrl = computed(() => getFileUrl(book?.value?.file || ''));
 const imageUrl = computed(() => getFileUrl(book?.value?.image || ''));
 
-onMounted(() => {
+watchEffect(() => {
 	const bookDetails = books.value.find((book) => book?.slug === params?.slug);
 	if (bookDetails?.id) {
 		book.value = bookDetails;
@@ -36,8 +36,6 @@ onMounted(() => {
 			image: bookDetails?.image,
 			slug: bookDetails?.slug,
 		});
-	} else {
-		navigate({ name: 'not-found' });
 	}
 });
 
@@ -62,7 +60,8 @@ const redirectToEditPage = () => {
 </script>
 
 <template>
-	<div class="flex flex-col items-center mt-16 w-full h-full justify-start">
+	<div v-if="!book" class="w-full h-full flex items-center justify-center">Loading...</div>
+	<div v-else class="flex flex-col items-center mt-16 w-full h-full justify-start">
 		<div class="flex items-center justify-center gap-5">
 			<h1 class="text-center text-3xl lg:text-4xl">{{ book?.title?.[locale] }}</h1>
 			<EditIcon

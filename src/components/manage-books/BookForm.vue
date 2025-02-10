@@ -31,7 +31,6 @@ watch(bookDetails, () => {
 	if (!isFormTouched.value) {
 		isFormTouched.value = true;
 	}
-	console.log(bookDetails);
 });
 
 const inputLocale = ref('en');
@@ -68,35 +67,35 @@ const handleTagRemove = (tag) => {
 					name="title"
 					:placeholder="$t('bookForm.fields.title.placeholder')"
 					:label="$t('bookForm.fields.title.label')"
-					:value="bookDetails.title[inputLocale]"
+					:value="bookDetails?.title?.[inputLocale]"
 					:inputHandler="(val) => (bookDetails.title[inputLocale] = val)"
 				/>
 				<FormInput
 					name="author"
 					:placeholder="$t('bookForm.fields.author.placeholder')"
 					:label="$t('bookForm.fields.author.label')"
-					:value="bookDetails.author[inputLocale]"
+					:value="bookDetails?.author?.[inputLocale]"
 					:inputHandler="(val) => (bookDetails.author[inputLocale] = val)"
 				/>
 				<FormInput
 					name="year"
 					:placeholder="$t('bookForm.fields.year.placeholder')"
 					:label="$t('bookForm.fields.year.label')"
-					:value="bookDetails.year?.toString()"
+					:value="bookDetails?.year?.toString()"
 					:inputHandler="(val) => (bookDetails.year = val)"
 				/>
 				<FormInput
 					name="pages"
 					:placeholder="$t('bookForm.fields.pages.placeholder')"
 					:label="$t('bookForm.fields.pages.label')"
-					:value="bookDetails.pages?.toString()"
+					:value="bookDetails?.pages?.toString()"
 					:inputHandler="(val) => (bookDetails.pages = val)"
 				/>
 				<FormInput
 					name="language"
 					:placeholder="$t('bookForm.fields.language.placeholder')"
 					:label="$t('bookForm.fields.language.label')"
-					:value="bookDetails.language[inputLocale]"
+					:value="bookDetails?.language?.[inputLocale]"
 					:inputHandler="(val) => (bookDetails.language[inputLocale] = val)"
 				/>
 				<FormInput
@@ -104,7 +103,7 @@ const handleTagRemove = (tag) => {
 					:placeholder="$t('bookForm.fields.description.placeholder')"
 					:label="$t('bookForm.fields.description.label')"
 					type="textarea"
-					:value="bookDetails.description[inputLocale]"
+					:value="bookDetails?.description?.[inputLocale]"
 					:inputHandler="(val) => (bookDetails.description[inputLocale] = val)"
 				/>
 				<TagsInput :tags="bookDetails.tags" :addHandler="handleTagAdd" :removeHandler="handleTagRemove" />
@@ -133,7 +132,7 @@ const handleTagRemove = (tag) => {
 				</button>
 
 				<button
-					@click.prevent="() => deleteBook(bookDetails, isFormTouched)"
+					@click.prevent="() => deleteBook(bookDetails?.id)"
 					class="py-2 px-16 bg-red-500 rounded-full self-center text-darkestBrown font-semibold hover:bg-red-600 transition-all duration-200 ease-out flex items-center justify-between gap-1"
 					v-if="mode === 'edit' && user?.id && bookDetails?.created_by === user?.id"
 				>

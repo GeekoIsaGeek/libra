@@ -33,7 +33,6 @@ const useBookStore = defineStore('books', () => {
 			books.value.push(response.data);
 			navigate({ name: 'details', params: { slug: response.data.slug } });
 		}
-		console.log(response);
 	};
 
 	const updateBook = async (book, isFormTouched) => {
@@ -59,7 +58,10 @@ const useBookStore = defineStore('books', () => {
 				Authorization: `Bearer ${getJwtToken()}`,
 			},
 		});
-		console.log(response);
+		if (response.status === 200) {
+			books.value = books.value.filter((book) => book.id !== bookId);
+			navigate({ name: 'home' });
+		}
 	};
 
 	return { books, selectedBook, fetchBooks, addBook, updateBook, deleteBook };

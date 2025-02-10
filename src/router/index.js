@@ -8,6 +8,7 @@ import Login from '@/pages/Login.vue';
 import Register from '@/pages/Register.vue';
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
+import { getJwtToken } from '../helpers';
 
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -55,7 +56,7 @@ router.beforeEach((to, from, next) => {
 
 	if ((to.name === 'login' || to.name === 'register') && isAuthenticated.value) {
 		next({ name: 'home' });
-	} else if ((to.name === 'add-book' || to.name === 'edit-book') && !isAuthenticated.value) {
+	} else if ((to.name === 'add-book' || to.name === 'edit-book') && !getJwtToken()) {
 		next({ name: 'login' });
 	} else {
 		next();

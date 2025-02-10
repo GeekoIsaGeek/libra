@@ -13,7 +13,6 @@ export const useFilterStore = defineStore('filters', () => {
 	const filteredBooks = ref([]);
 
 	const filterBooks = () => {
-		console.log(books.value);
 		filteredBooks.value = books.value.filter((book) => {
 			const meetsGenreFilter = !genre.value || book?.tags?.includes(genre.value);
 			const meetsLangFilter = !language.value || book.language === language.value;

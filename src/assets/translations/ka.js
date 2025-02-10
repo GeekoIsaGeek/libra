@@ -71,7 +71,7 @@ export default {
 		emailPlaceholder: 'შეიყვანეთ ელფოსტა',
 		passwordPlaceholder: 'შეიყვანეთ პაროლი',
 		usernamePlaceholder: 'შეიყვანეთ მომხმარებლის სახელი',
-		logOut: 'გამოსვლა',
+		logOut: 'გასვლა',
 	},
 	errors: {
 		required: 'ეს ველი აუცილებელია',
