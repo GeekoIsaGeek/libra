@@ -10,6 +10,7 @@ import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 import { getJwtToken } from '@/helpers';
 import About from '@/pages/About.vue';
+import Listing from '@/pages/Listing.vue';
 
 const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -23,6 +24,11 @@ const router = createRouter({
 			path: '/books/:slug',
 			component: DetailsPage,
 			name: 'details',
+		},
+		{
+			path: '/books',
+			component: Listing,
+			name: 'books',
 		},
 		{
 			path: '/add',

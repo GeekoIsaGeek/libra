@@ -4,9 +4,9 @@ import LogoutIcon from '@/components/icons/LogoutIcon.vue';
 import { useUserStore } from '@/stores/UserStore';
 import { storeToRefs } from 'pinia';
 import { useRouter } from 'vue-router';
-import LibraryIcon from '../icons/LibraryIcon.vue';
+import LibraryIcon from '@/components/icons/LibraryIcon.vue';
 
-defineEmits(['close']);
+const emit = defineEmits(['close']);
 
 const { clearUser } = useUserStore();
 const { isAuthenticated } = storeToRefs(useUserStore());
@@ -18,15 +18,22 @@ const handleLogout = () => {
 };
 const links = [
 	{ name: 'home', label: 'routes.home' },
+	{ name: 'books', label: 'routes.books' },
 	{ name: 'add-book', label: 'routes.add' },
 	{ name: 'about', label: 'routes.about' },
 ];
+
+const handleClose = () => {
+	if (window.innerWidth < 1024) {
+		emit('close');
+	}
+};
 </script>
 
 <template>
 	<div class="sidebar">
-		<div class="py-7 lg:py-0 sm:mr-12">
-			<h1>
+		<div class="py-7 lg:py-0 sm:!mr-12 logo-wrapper">
+			<h1 class="!pr-14 sm:!pr-0">
 				<RouterLink :to="{ name: 'home' }" class="flex items-center flex-col">
 					<LibraryIcon class="w-7 h-7" />
 					Libra
@@ -39,8 +46,14 @@ const links = [
 		</div>
 
 		<div class="flex flex-col h-full justify-between pt-10">
-			<nav class="flex flex-col items-start gap-6 ml-12 sm:ml-0 text-[28px] text-gold">
-				<RouterLink :to="{ name: link.name }" v-for="link in links" :key="link.name" class="relative group">
+			<nav class="flex flex-col items-start gap-6 ml-12 sm:ml-0 text-[36px] sm:text-[28px] text-gold">
+				<RouterLink
+					:to="{ name: link.name }"
+					v-for="link in links"
+					:key="link.name"
+					class="relative group"
+					@click="handleClose"
+				>
 					{{ $t(link.label) }}
 					<span
 						class="absolute left-1/2 bottom-0 w-0 h-[2px] bg-gold transition-all duration-300 ease-in-out group-hover:w-full group-hover:left-0"
@@ -109,6 +122,12 @@ const links = [
 		width: 100%;
 		z-index: 10;
 		background-color: rgba(14, 14, 14, 0.8);
+	}
+	.sidebar h1 {
+		padding-bottom: 10px;
+	}
+	.logo-wrapper {
+		width: 100% !important;
 	}
 }
 </style>

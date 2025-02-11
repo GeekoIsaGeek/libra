@@ -89,5 +89,6 @@ export default {
 		add: 'Add New Book',
 		login: 'Login',
 		about: 'About Us',
+		books: 'Books',
 	},
 };

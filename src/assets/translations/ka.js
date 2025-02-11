@@ -89,6 +89,7 @@ export default {
 		add: 'დამატება',
 		login: 'შესვლა',
 		about: 'ჩვენს შესახებ',
+		books: 'წიგნები',
 	},
 
 	// Order of languages and genres should be the same as in the constants file
