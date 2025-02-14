@@ -7,6 +7,7 @@ import { clearState } from '@/helpers';
 import useValidator from '@/composables/useValidator';
 import axios from 'axios';
 import { useUserStore } from '@/stores/UserStore';
+import { useRouter } from 'vue-router';
 
 const registrationForm = reactive({
 	email: '',
@@ -14,6 +15,8 @@ const registrationForm = reactive({
 	password: '',
 	passwordConfirmation: '',
 });
+
+const { push: navigate } = useRouter();
 
 const { setUser } = useUserStore();
 
@@ -33,6 +36,7 @@ const handleRegistration = async (event) => {
 				password: registrationForm.password,
 			});
 			setUser(response.data?.user, response.data?.access_token);
+			navigate({ name: 'home' });
 		}
 	} catch (error) {
 		console.error(error);
